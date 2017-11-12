@@ -1,9 +1,10 @@
 package br.com.baseproject.baseproject.Activities;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,34 +13,34 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.theartofdev.edmodo.cropper.CropImage;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import br.com.baseproject.baseproject.Managers.MainManager;
 import br.com.baseproject.baseproject.R;
+import br.com.baseproject.baseproject.Utils.ImageUtils;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MainManager.MainFeedback {
 
     private MainManager manager;
+    private ImageView mImageView;
+    private ImageUtils imageUtilsHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setupFab();
+        mImageView = findViewById(R.id.imageMain);
+
         setupNavigation();
         setupManager();
-    }
-
-    private void setupFab() {
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     private void setupNavigation() {
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity
 
     private void setupManager() {
         manager = new MainManager(this);
+        imageUtilsHelper = new ImageUtils();
     }
 
     @Override
@@ -99,13 +101,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            imageUtilsHelper.dispatchTakePictureIntent(MainActivity.this);
         } else if (id == R.id.nav_gallery) {
-
+            imageUtilsHelper.dispatchGalleryImageIntent(MainActivity.this);
         } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
+            imageUtilsHelper.getAndCropImage(MainActivity.this);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
@@ -120,5 +120,40 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void didUpdateUser() {
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == imageUtilsHelper.REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            mImageView.setImageBitmap(imageBitmap);
+        } else if (requestCode == imageUtilsHelper.REQUEST_LOAD_IMGAGE && resultCode == RESULT_OK) {
+            try {
+                final Uri imageUri = data.getData();
+                final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+                final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                mImageView.setImageBitmap(selectedImage);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
+            }
+        } else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                try{
+                    Uri resultUri = result.getUri();
+                    final InputStream imageStream = getContentResolver().openInputStream(resultUri);
+                    final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                    mImageView.setImageBitmap(selectedImage);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                    Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
+                }
+
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }
     }
 }
