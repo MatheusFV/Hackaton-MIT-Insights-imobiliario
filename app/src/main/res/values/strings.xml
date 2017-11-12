@@ -4,5 +4,14 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="label_register">Seus dados, usando Firebase</string>
+    <string name="label_your_pic">Sua foto, escolhida usando ImageUtils</string>
+
+    <string name="button_save">Salvar Dados</string>
+    <string name="button_get">Buscar Dados</string>
+
+    <string name="hint_name">Nome</string>
+    <string name="hint_email">Email</string>
+
     <string name="action_settings">Settings</string>
 </resources>
