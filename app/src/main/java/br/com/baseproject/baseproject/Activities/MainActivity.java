@@ -6,13 +6,18 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -22,6 +27,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import br.com.baseproject.baseproject.Managers.MainManager;
+import br.com.baseproject.baseproject.Models.User;
 import br.com.baseproject.baseproject.R;
 import br.com.baseproject.baseproject.Utils.ImageUtils;
 
@@ -32,15 +38,26 @@ public class MainActivity extends AppCompatActivity
     private ImageView mImageView;
     private ImageUtils imageUtilsHelper;
 
+    private TextInputEditText nameEditText;
+    private TextInputEditText emailEditText;
+
+    private Button saveDataButton;
+    private Button getDataButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mImageView = findViewById(R.id.imageMain);
+        nameEditText = findViewById(R.id.activity_main_field_name);
+        emailEditText = findViewById(R.id.activity_main_field_email);
+        saveDataButton = findViewById(R.id.activity_main_button_save);
+        getDataButton = findViewById(R.id.activity_main_button_get);
 
         setupNavigation();
         setupManager();
+        setupButtons();
     }
 
     private void setupNavigation() {
@@ -60,6 +77,23 @@ public class MainActivity extends AppCompatActivity
     private void setupManager() {
         manager = new MainManager(this);
         imageUtilsHelper = new ImageUtils();
+    }
+
+    private void setupButtons() {
+        saveDataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = nameEditText.getText().toString();
+                String email = emailEditText.getText().toString();
+                manager.saveUser(name, email);
+            }
+        });
+        getDataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                manager.getUser();
+            }
+        });
     }
 
     @Override
@@ -118,11 +152,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void didUpdateUser() {
-
-    }
-
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == imageUtilsHelper.REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
@@ -154,6 +183,23 @@ public class MainActivity extends AppCompatActivity
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
             }
+        }
+    }
+
+    @Override
+    public void didSaveUser(boolean success) {
+        if (success) {
+            Log.d("SUCESSO_SALVAR", "Usuario salvo no Banco");
+            //TODO: Sucesso
+        }
+    }
+
+    @Override
+    public void didGetUser(String name, String email, boolean success) {
+        if (success) {
+            Log.d("SUCESSO_RECEBER", "Usuario pego no Banco");
+            nameEditText.setText(name);
+            emailEditText.setText(email);
         }
     }
 }
