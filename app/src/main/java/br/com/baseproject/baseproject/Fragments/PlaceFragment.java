@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,8 @@ public class PlaceFragment extends Fragment {
     TextView price;
     CircleImageView avatar;
     Button outButton;
+    ScrollView scrollView;
+    TextView placeholder;
     User user;
 
     //Firebase
@@ -104,6 +107,8 @@ public class PlaceFragment extends Fragment {
 
                     if (place.status.equals("confirmed")){
                         myPlace = place;
+                    }else{
+                        myPlace = null;
                     }
                 }
                 setPropertyInfo();
@@ -141,10 +146,14 @@ public class PlaceFragment extends Fragment {
         price = getActivity().findViewById(R.id.fragment_place_price);
         avatar = getActivity().findViewById(R.id.fragment_place_avatar);
         outButton = getActivity().findViewById(R.id.fragment_place_out_button);
+        scrollView = getActivity().findViewById(R.id.container);
+        placeholder = getActivity().findViewById(R.id.placeholder);
     }
 
     void setPropertyInfo(){
         if(myPlace != null){
+            scrollView.setVisibility(View.VISIBLE);
+            placeholder.setVisibility(View.GONE);
             address.setText("Endereço: " + myPlace.address);
             spots.setText("Vagas: " + myPlace.slots.toString());
             price.setText("Preço: R$" + myPlace.price + ",00");
@@ -153,6 +162,9 @@ public class PlaceFragment extends Fragment {
                     .load(myPlace.imageUrl)
                     .apply(RequestOptions.placeholderOf(R.drawable.casa_placeholder))
                     .into(avatar);
+        }else{
+            scrollView.setVisibility(View.GONE);
+            placeholder.setVisibility(View.VISIBLE);
         }
     }
 
@@ -161,7 +173,7 @@ public class PlaceFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 DatabaseReference ref = database.child("usersGroup").child(mAuth.getCurrentUser().getUid()).child(myPlace.id);
-                ref.setValue(new Place(myPlace.address, "kicked"));
+                ref.setValue(new Place(myPlace.imageUrl, myPlace.address, myPlace.slots, myPlace.price, "kicked", null));
 
                 DatabaseReference ref2 = database.child("placeRelations").child(myPlace.id).child(mAuth.getCurrentUser().getUid());
                 ref2.setValue(user);
