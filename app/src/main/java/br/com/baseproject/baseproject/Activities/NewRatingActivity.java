@@ -8,6 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -43,12 +46,12 @@ public class NewRatingActivity extends AppCompatActivity {
         ToolbarConfigurator.configToolbar(toolbar,"Avaliação",R.drawable.ic_arrow_back,0,this);
         filters = new ArrayList<>();
 
-        filters.add("Já existem moradores");
-        filters.add("Ainda não há moradores no momento");
-        filters.add("Posso morar sozinho");
-        filters.add("Os moradores tem idade parecida com a minha");
-        filters.add("Os moradores tem perfil similar ao meu");
-        filters.add("O proprietário é membro ativo do aplicativo");
+        filters.add("Mudou de Cidade");
+        filters.add("Comportamento Inadequado");
+        filters.add("Bom Inquilino");
+        filters.add("Mudou por Motivo Financeiro");
+        filters.add("Inadimplência");
+        filters.add("Mudou por Instatisfação");
 
         options= new Boolean[filters.size()];
         Arrays.fill(options, Boolean.FALSE);
@@ -71,7 +74,10 @@ public class NewRatingActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO Avaliar Usuário (userId pego da intent)
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+                ArrayList<String> ratings = new ArrayList<String>();
+                for (int i=0; i<options.length; i++) { if(options[i]) ratings.add(filters.get(i)); }
+                ref.child("users").child(userId).child("ratings").push().setValue(ratings);
                 finish();
             }
         });
