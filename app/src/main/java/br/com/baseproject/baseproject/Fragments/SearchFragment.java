@@ -93,7 +93,6 @@ public class SearchFragment extends Fragment {
 
         filters.add("Já existem moradores");
         filters.add("Ainda não há moradores no momento");
-        filters.add("Posso morar sozinho");
         filters.add("Os moradores tem idade parecida com a minha");
         filters.add("Os moradores tem perfil similar ao meu");
         filters.add("O proprietário é membro ativo do aplicativo");

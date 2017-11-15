@@ -11,6 +11,8 @@ public class UserTags {
     public boolean smoke;
     public String gender;
 
+    public UserTags() {}
+
     public UserTags(String age, boolean animal, String ocupation, boolean smoke, String gender) {
         this.age = age;
         this.animal = animal;

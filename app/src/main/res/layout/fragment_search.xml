@@ -44,10 +44,10 @@
             custom:pinMinFont="12sp"
             custom:pinRadius="15dp"
             custom:temporaryPins="false"
-            custom:tickEnd="2000"
+            custom:tickEnd="9999"
             custom:tickHeight="0dp"
             custom:tickInterval="1"
-            custom:tickStart="100"/>
+            custom:tickStart="99"/>
 
         <TextView
             android:id="@+id/fragment_search_label_filters"

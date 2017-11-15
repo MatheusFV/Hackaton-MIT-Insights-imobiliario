@@ -1,5 +1,7 @@
 package br.com.baseproject.baseproject.Models;
 
+import java.util.ArrayList;
+
 /**
  * Created by luciana on 15/11/17.
  */
@@ -12,16 +14,17 @@ public class Place {
     public String slots;
     public String price;
     public String status;
+    public ArrayList<String> tags;
 
     public Place() {
     }
 
-    public Place(String photoUrl, String address, String spots, String price, String[] tags) {
+    public Place(String photoUrl, String address, String spots, String price, ArrayList<String> tags) {
         this.imageUrl = photoUrl;
         this.address = address;
         this.slots = spots;
         this.price = price;
-//        this.tags = tags;
+        this.tags = tags;
     }
 
 
