@@ -42,6 +42,7 @@
             android:id="@+id/activity_login_field_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:hint="@string/hint_password" />
 
     </android.support.design.widget.TextInputLayout>
@@ -53,5 +54,13 @@
         android:textSize="17sp"
         android:text="@string/button_login"
         android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/login_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Não possui cadastro? Clique aqui!"/>
+
 
 </LinearLayout>
