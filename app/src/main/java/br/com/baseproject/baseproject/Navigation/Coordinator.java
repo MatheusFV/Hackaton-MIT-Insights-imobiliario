@@ -6,6 +6,7 @@ import android.content.Intent;
 import java.util.ArrayList;
 
 import br.com.baseproject.baseproject.Activities.ChatActivity;
+import br.com.baseproject.baseproject.Activities.NewRatingActivity;
 import br.com.baseproject.baseproject.Activities.ProfilePropertyActivity;
 import br.com.baseproject.baseproject.Activities.RatingActivity;
 import br.com.baseproject.baseproject.Activities.SearchResultsActivity;
@@ -46,6 +47,12 @@ public class Coordinator {
         intent.putExtra("price",place.price);
         intent.putExtra("id",place.id);
         intent.putExtra("imageUrl",place.imageUrl);
+        activity.startActivity(intent);
+    }
+
+    public static void goToNewRating(Activity activity, String userId) {
+        Intent intent = new Intent(activity, NewRatingActivity.class);
+        intent.putExtra("userId",userId);
         activity.startActivity(intent);
     }
 }
