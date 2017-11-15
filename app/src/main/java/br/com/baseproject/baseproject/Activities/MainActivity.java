@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 String name = nameEditText.getText().toString();
                 String email = emailEditText.getText().toString();
-                manager.saveUser(name, email);
+                manager.saveUser(name, "", email);
             }
         });
         getDataButton.setOnClickListener(new View.OnClickListener() {

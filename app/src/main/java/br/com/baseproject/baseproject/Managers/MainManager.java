@@ -23,8 +23,8 @@ public class MainManager implements UserService.FDUserFeedback {
         this.feedback = feedback;
     }
 
-    public void saveUser(String name, String email) {
-        User user = new User(id, name, email);
+    public void saveUser(String name, String phone, String email) {
+        User user = new User(id, name, phone, email);
         if (id == null) {
             service.createUser(user, this);
         } else {

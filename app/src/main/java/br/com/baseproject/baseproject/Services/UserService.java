@@ -56,7 +56,8 @@ public class UserService {
                 String id = dataSnapshot.getKey();
                 String name = dataSnapshot.child("name").getValue().toString();
                 String email = dataSnapshot.child("email").getValue().toString();
-                feedback.didGetUser(new User(id, name, email), true);
+                String phone = dataSnapshot.child("phone").getValue().toString();
+                feedback.didGetUser(new User(id, name, phone, email), true);
             }
 
             @Override
