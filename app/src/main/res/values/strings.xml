@@ -13,6 +13,8 @@
     <string name="button_advance">Avançar</string>
     <string name="button_register">Cadastrar</string>
     <string name="button_ratings">Avaliações</string>
+    <string name="button_out">Sair do spot</string>
+    <string name="button_rate">Avaliar</string>
     <string name="button_interest">Tenho interesse !</string>
 
     <string name="hint_name">Nome</string>
