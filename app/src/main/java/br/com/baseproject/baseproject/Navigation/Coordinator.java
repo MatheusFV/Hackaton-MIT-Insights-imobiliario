@@ -14,7 +14,7 @@ import br.com.baseproject.baseproject.Activities.SearchResultsActivity;
 
 public class Coordinator {
 
-    public static void goToSearchResults(Activity activity, String address, ArrayList<String> filters, float minPrice, float maxPrice){
+    public static void goToSearchResults(Activity activity, String address, ArrayList<String> filters, int minPrice, int maxPrice){
         Intent intent = new Intent(activity, SearchResultsActivity.class);
         intent.putExtra("address",address);
         intent.putStringArrayListExtra("filters",filters);

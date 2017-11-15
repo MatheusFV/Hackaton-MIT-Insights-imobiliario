@@ -4,10 +4,81 @@
     android:layout_height="match_parent"
     tools:context="br.com.baseproject.baseproject.Fragments.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="SEARCH" />
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:orientation="vertical">
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/fragment_search_address_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/fragment_search_field_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_address_reference"
+                android:inputType="textCapWords"
+                android:textSize="14sp"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/fragment_search_label_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_search_address_container"
+            android:text="@string/price"/>
+
+        <com.appyvet.rangebar.RangeBar xmlns:custom="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/search_price_rangebar"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_below="@id/fragment_search_label_price"
+            custom:pinMaxFont="12sp"
+            custom:pinMinFont="12sp"
+            custom:pinRadius="15dp"
+            custom:temporaryPins="false"
+            custom:tickEnd="2000"
+            custom:tickHeight="0dp"
+            custom:tickInterval="1"
+            custom:tickStart="100"/>
+
+        <TextView
+            android:id="@+id/fragment_search_label_filters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/search_price_rangebar"
+            android:text="@string/filters"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/search_filters_list"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/search_price_rangebar"
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/search_event_floating_action_button"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/icon_search"
+            android:tint="@color/white"
+            android:scaleType="center"
+            android:elevation="10dp"/>
+
+    </RelativeLayout>
 
 </FrameLayout>

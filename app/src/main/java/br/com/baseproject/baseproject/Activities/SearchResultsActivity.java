@@ -25,8 +25,8 @@ public class SearchResultsActivity extends AppCompatActivity {
 
     String referenceAddress;
     ArrayList<String> filters;
-    float minPrice;
-    float maxPrice;
+    int minPrice;
+    int maxPrice;
 
 
     @Override
@@ -39,8 +39,8 @@ public class SearchResultsActivity extends AppCompatActivity {
         if(b != null) {
             referenceAddress = b.getString("address");
             filters = b.getStringArrayList("filters");
-            minPrice = b.getFloat("minPrice");
-            maxPrice = b.getFloat("maxPrice");
+            minPrice = b.getInt("minPrice");
+            maxPrice = b.getInt("maxPrice");
         }
 
         places = new ArrayList<Place>();
