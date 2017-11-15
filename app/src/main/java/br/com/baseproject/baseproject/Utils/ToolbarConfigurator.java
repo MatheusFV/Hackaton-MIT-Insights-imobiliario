@@ -20,7 +20,7 @@ public class ToolbarConfigurator {
      * @param leftIconResId    Set the left icon if id != 0
      * @param rightIconResId   Set the right icon if id != 0
      */
-    public static void configToolbar(View toolbarLayout, String title, @DrawableRes int leftIconResId, @DrawableRes int rightIconResId, Activity activity){
+    public static void configToolbar(View toolbarLayout, String title, @DrawableRes int leftIconResId, @DrawableRes int rightIconResId, final Activity activity){
 
         IncludedToolbar includedToolbar = new IncludedToolbar(activity);
 
@@ -33,6 +33,12 @@ public class ToolbarConfigurator {
         if(leftIconResId != 0) {
             includedToolbar.leftIcon.setVisibility(View.VISIBLE);
             includedToolbar.leftIcon.setImageResource(leftIconResId);
+            includedToolbar.leftIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    activity.finish();
+                }
+            });
         } else {
             includedToolbar.leftIcon.setVisibility(View.GONE);
         }

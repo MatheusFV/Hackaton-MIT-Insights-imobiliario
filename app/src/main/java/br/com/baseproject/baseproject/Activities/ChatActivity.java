@@ -2,6 +2,7 @@ package br.com.baseproject.baseproject.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -10,6 +11,8 @@ import com.stfalcon.chatkit.messages.MessageInput;
 import com.stfalcon.chatkit.messages.MessagesList;
 
 import br.com.baseproject.baseproject.R;
+import br.com.baseproject.baseproject.Utils.ToolbarConfigurator;
+import br.com.baseproject.baseproject.Utils.Utils;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChatActivity extends AppCompatActivity {
@@ -22,6 +25,7 @@ public class ChatActivity extends AppCompatActivity {
     private MessageInput messageInput;
 
     private String placeId, address, imageUrl;
+    private View toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +50,13 @@ public class ChatActivity extends AppCompatActivity {
 
         messagesList = findViewById(R.id.activity_chat_message_list);
         messageInput = findViewById(R.id.activity_chat_message_input);
+        toolbar = findViewById(R.id.activity_chat_toolbar);
     }
 
     private void setInformation() {
+
+        ToolbarConfigurator.configToolbar(toolbar,"Chat",R.drawable.ic_arrow_back,0,this);
+        Utils.setStatusBarColor(ChatActivity.this, R.color.colorAccent);
 
         addressText.setText(address);
         Glide.with(this)

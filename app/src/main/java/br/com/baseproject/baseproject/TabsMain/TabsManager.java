@@ -79,6 +79,7 @@ public class TabsManager {
         }
         fragmentTransaction.commit();
         selectFragment(fragments.get(initialFragment), tabsImages.get(initialFragment));
+        ToolbarConfigurator.configToolbar(tabsMainActivity.findViewById(R.id.toolbar),"Perfil",0,0,tabsMainActivity);
     }
 
     public void selectFragment(Fragment fragmentSelected, ImageView imageSelected){
