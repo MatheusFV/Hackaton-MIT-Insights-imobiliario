@@ -15,6 +15,8 @@ public class User {
     public String photoUrl;
     public String status;
 
+    public User() {
+    }
 
     public User(String id, String name, String phone, String email) {
         this.id = id;

@@ -29,7 +29,7 @@
         <activity
             android:name=".Activities.TabsMainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.SearchResultsActivity"
             android:screenOrientation="portrait"
@@ -47,14 +47,16 @@
         <activity
             android:name=".Activities.RegisterInfosActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Activities.ChatActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Activities.RatingActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".Activities.ProfilePropertyActivity"
-            android:screenOrientation="portrait"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.ChatActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.RatingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.ProfilePropertyActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
