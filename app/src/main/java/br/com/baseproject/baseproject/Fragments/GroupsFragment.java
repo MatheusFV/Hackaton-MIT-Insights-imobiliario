@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -37,6 +38,7 @@ public class GroupsFragment extends Fragment {
 
     private FirebaseManager firebaseManager;
 
+    private TextView placeholder;
     ArrayList<Place> places;
 
     public GroupsFragment() {
@@ -72,7 +74,11 @@ public class GroupsFragment extends Fragment {
             public void onRefresh(DataSnapshot dataSnapshot) {
                 places.clear();
                 Place place;
+                placeholder.setVisibility(View.VISIBLE);
+                recyclerView.setVisibility(View.GONE);
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    placeholder.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
                     place = postSnapshot.getValue(Place.class);
                     place.id = postSnapshot.getKey();
                     places.add(place);
@@ -100,6 +106,7 @@ public class GroupsFragment extends Fragment {
 
     private void getLayoutIds() {
         recyclerView = getView().findViewById(R.id.fragment_groups_recycler_view);
+        placeholder = getView().findViewById(R.id.placeholder_chat);
     }
 
     private void setupManager() {

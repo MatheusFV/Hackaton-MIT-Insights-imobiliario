@@ -89,26 +89,26 @@ public class RegisterInfosActivity extends AppCompatActivity {
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
 
-            if (!task.isSuccessful()) {
-                Toast.makeText(RegisterInfosActivity.this, "Erro ao cadastrar", Toast.LENGTH_LONG).show();
-            } else {
-                DatabaseReference ref = database.child("users").child(mAuth.getCurrentUser().getUid());
-                ref.setValue(createUser(mAuth.getCurrentUser().getUid()));
-                try{
-                    if (image != null){
-                        final InputStream imageStream = getContentResolver().openInputStream(image);
-                        final Bitmap bitmapImage = BitmapFactory.decodeStream(imageStream);
-                        saveImageOnFirebase(bitmapImage);
-                    }else{
-                        Intent intent = new Intent(RegisterInfosActivity.this, TabsMainActivity.class);
-                        startActivity(intent);
-                    }
-                }catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                    Toast.makeText(RegisterInfosActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
+//            if (!task.isSuccessful()) {
+//                Toast.makeText(RegisterInfosActivity.this, "Erro ao cadastrar", Toast.LENGTH_LONG).show();
+//            } else {
+            DatabaseReference ref = database.child("users").child(mAuth.getCurrentUser().getUid());
+            ref.setValue(createUser(mAuth.getCurrentUser().getUid()));
+            try{
+                if (image != null){
+                    final InputStream imageStream = getContentResolver().openInputStream(image);
+                    final Bitmap bitmapImage = BitmapFactory.decodeStream(imageStream);
+                    saveImageOnFirebase(bitmapImage);
+                }else{
+                    Intent intent = new Intent(RegisterInfosActivity.this, TabsMainActivity.class);
+                    startActivity(intent);
                 }
-
+            }catch (FileNotFoundException e) {
+                e.printStackTrace();
+                Toast.makeText(RegisterInfosActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
             }
+
+//            }
         }
     };
 

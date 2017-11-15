@@ -6,9 +6,24 @@
     android:orientation="vertical"
     tools:context="br.com.baseproject.baseproject.Fragments.GroupsFragment">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:textAlignment="center"
+        android:layout_marginTop="90dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:id="@+id/placeholder_chat"
+        android:visibility="gone"
+        android:text="Você ainda não possui nenhum grupo. Faça uma busca para encontrar pessoas compatíveis com você!"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fragment_groups_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:visibility="visible"/>
+
+
 
 </LinearLayout>
