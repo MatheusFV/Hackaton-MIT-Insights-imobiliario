@@ -40,6 +40,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.1.1'
     compile 'com.kaopiz:kprogresshud:1.0.5'
     compile 'com.github.stfalcon:chatkit:0.2.1'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }
 
 

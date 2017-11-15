@@ -57,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="41dp"
-        app:incomingDefaultBubbleColor="@color/colorPrimary"
+        app:incomingDefaultBubbleColor="@color/colorYellow"
         app:incomingTextLinkColor="@color/colorPrimaryDark"
         app:incomingTextSize="14sp"
         app:incomingTextColor="@color/white"
