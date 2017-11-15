@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toolbar;
 
 import com.theartofdev.edmodo.cropper.CropImage;
 
