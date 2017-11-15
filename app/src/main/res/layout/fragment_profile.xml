@@ -141,8 +141,8 @@
                 android:background="@color/colorAccent"
                 android:layout_centerInParent="true"
                 android:textSize="12sp"
-                android:text="@string/button_history"
-                android:layout_marginTop="20dp" />
+                android:text="@string/button_ratings"
+                android:layout_marginTop="20dp"/>
 
         </RelativeLayout>
 
