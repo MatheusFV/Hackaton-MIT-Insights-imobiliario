@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--<include android:id="@+id/toolbar" layout="@layout/toolbar_no_menu">-->
+        <!--</include>-->
+
+        <FrameLayout
+            android:id="@+id/fragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:layout_above="@+id/belowTab"/>
+
+        <LinearLayout
+            android:id="@+id/belowTab"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:elevation="4dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true">
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
