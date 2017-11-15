@@ -1,29 +1,33 @@
 package br.com.baseproject.baseproject.Fragments;
 
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 import br.com.baseproject.baseproject.Adapters.ProfileAdapter;
-import br.com.baseproject.baseproject.Managers.RegisterManager;
+import br.com.baseproject.baseproject.Managers.FirebaseManager;
 import br.com.baseproject.baseproject.Models.Place;
-import br.com.baseproject.baseproject.Models.User;
 import br.com.baseproject.baseproject.R;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +40,13 @@ public class ProfileFragment extends Fragment {
     private TextView emailText;
     private Button historyButton;
     private RecyclerView userHistory;
+    private CircleImageView image;
+
+    //Firebase
+    private DatabaseReference database;
+    private FirebaseAuth mAuth;
+
+    private FirebaseManager firebaseManager;
 
     public ProfileFragment() {
 
@@ -54,6 +65,29 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
+        //Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+        //Firebase Database
+        database = FirebaseDatabase.getInstance().getReference();
+
+        DatabaseReference ref = database.child("users").child(mAuth.getCurrentUser().getUid());
+
+        firebaseManager = new FirebaseManager(ref, new FirebaseManager.EventDataListener() {
+            @Override
+            public void onRefresh(DataSnapshot dataSnapshot) {
+                Toast.makeText(getActivity() ,"oid", Toast.LENGTH_LONG).show();
+                setFieldsTexts(dataSnapshot.child("name").getValue().toString(),
+                        dataSnapshot.child("email").getValue().toString(),
+                        dataSnapshot.child("phone").getValue().toString());
+                Glide.with(getActivity())
+                        .load(dataSnapshot.child("photoUrl").getValue().toString())
+                        .apply(RequestOptions.placeholderOf(R.color.colorPrimaryDark))
+                        .into(image);
+            }
+        });
+
         getLayoutIds();
         setupManager();
         setupRecyclerView();
@@ -75,11 +109,18 @@ public class ProfileFragment extends Fragment {
 
         userHistory = getView().findViewById(R.id.fragment_profile_history);
 
+        image = getView().findViewById(R.id.fragment_profile_avatar);
         nameText = getView().findViewById(R.id.fragment_profile_name);
         phoneText = getView().findViewById(R.id.fragment_profile_phone);
         emailText = getView().findViewById(R.id.fragment_profile_email);
 
         historyButton = getView().findViewById(R.id.fragment_profile_button_history);
+    }
+
+    private void setFieldsTexts(String name, String email, String phone){
+        nameText.setText(name);
+        emailText.setText(email);
+        phoneText.setText(phone);
     }
 
     private void setButtonActions() {
