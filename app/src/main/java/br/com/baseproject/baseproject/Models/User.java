@@ -10,6 +10,7 @@ public class User {
     public String name;
     public String phone;
     public String email;
+    public boolean kicked = false;
     public UserTags tags;
     public String photoUrl;
     public String status;
@@ -20,6 +21,12 @@ public class User {
         this.name = name;
         this.phone = phone;
         this.email = email;
+    }
+
+    public User(String name, String photoUrl,boolean kicked) {
+        this.name = name;
+        this.photoUrl = photoUrl;
+        this.kicked = kicked;
     }
 
     public User(String name, String phone, String email, String gender, String age, boolean animal, String ocupation, boolean smoke) {

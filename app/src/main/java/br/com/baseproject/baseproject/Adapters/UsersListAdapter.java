@@ -3,6 +3,7 @@ package br.com.baseproject.baseproject.Adapters;
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
@@ -11,8 +12,10 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
+import br.com.baseproject.baseproject.Activities.TabsMainActivity;
 import br.com.baseproject.baseproject.Fragments.SearchFragment;
 import br.com.baseproject.baseproject.Models.User;
+import br.com.baseproject.baseproject.Navigation.Coordinator;
 import br.com.baseproject.baseproject.R;
 import br.com.baseproject.baseproject.databinding.ItemCheckboxOptionBinding;
 import br.com.baseproject.baseproject.databinding.ItemUserBinding;
@@ -47,6 +50,23 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.User
                 .apply(RequestOptions.placeholderOf(R.drawable.ic_user))
                 .into(holder.binding.itemUserAvatar);
         holder.bind(user);
+        if (activity instanceof TabsMainActivity){
+            if (user.kicked){
+                holder.binding.itemUserButton.setVisibility(View.VISIBLE);
+                holder.binding.itemUserButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //TODO newRating
+                        //Coordinator.goToRate();
+                    }
+                });
+            }else {
+                holder.binding.itemUserButton.setVisibility(View.GONE);
+            }
+
+        } else {
+            holder.binding.itemUserButton.setVisibility(View.GONE);
+        }
 
     }
 
