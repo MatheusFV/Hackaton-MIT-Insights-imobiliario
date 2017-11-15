@@ -18,7 +18,7 @@ import br.com.baseproject.baseproject.Utils.ImageUtils;
 import br.com.baseproject.baseproject.Utils.Utils;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class RegisterActivity extends AppCompatActivity implements RegisterManager.RegisterFeedback {
+public class RegisterActivity extends AppCompatActivity {
 
     private TextInputEditText nameEditText;
     private TextInputEditText phoneEditText;
@@ -109,7 +109,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterManag
                 String phone = phoneEditText.getText().toString();
                 String email = emailEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
-                manager.register(new User("", name, phone, email), password);
                 Intent intent = new Intent(RegisterActivity.this, RegisterInfosActivity.class);
                 intent.putExtra("name", name);
                 intent.putExtra("phone", phone);

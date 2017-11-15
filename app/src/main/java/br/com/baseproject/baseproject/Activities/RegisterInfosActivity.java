@@ -34,7 +34,7 @@ import br.com.baseproject.baseproject.Models.User;
 import br.com.baseproject.baseproject.R;
 import br.com.baseproject.baseproject.Utils.Utils;
 
-public class RegisterInfosActivity extends AppCompatActivity implements RegisterManager.RegisterFeedback{
+public class RegisterInfosActivity extends AppCompatActivity {
 
     Button register;
     Spinner gender;
@@ -57,9 +57,6 @@ public class RegisterInfosActivity extends AppCompatActivity implements Register
     //Firebase
     private DatabaseReference database;
     private FirebaseAuth mAuth;
-
-
-    RegisterManager registerManager;
 
     KProgressHUD progressHUD;
 
@@ -85,7 +82,6 @@ public class RegisterInfosActivity extends AppCompatActivity implements Register
         image = getIntent().getParcelableExtra("image");
         getLayoutIds();
         setButtonActions();
-        setupManager();
         setSpinners();
     }
 
@@ -193,10 +189,6 @@ public class RegisterInfosActivity extends AppCompatActivity implements Register
         finishRegister();
     }
 
-    private void setupManager() {
-        registerManager = new RegisterManager(RegisterInfosActivity.this);
-    }
-
     private void setSpinners(){
         setSpinnerAdapter(gender, R.array.genders);
         setSpinnerAdapter(animals, R.array.yes_no_animal);
@@ -222,15 +214,5 @@ public class RegisterInfosActivity extends AppCompatActivity implements Register
         }else{
             Toast.makeText(RegisterInfosActivity.this, "Por favor, selecione todos os campos", Toast.LENGTH_LONG).show();
         }
-    }
-
-    @Override
-    public void registerSuccess() {
-
-    }
-
-    @Override
-    public void registerError(Error error) {
-
     }
 }

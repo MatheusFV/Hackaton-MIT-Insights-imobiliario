@@ -21,7 +21,7 @@ import com.kaopiz.kprogresshud.KProgressHUD;
 import br.com.baseproject.baseproject.R;
 import br.com.baseproject.baseproject.Utils.Utils;
 
-public class LoginActivity extends AppCompatActivity implements LoginManager.LoginFeedback {
+public class LoginActivity extends AppCompatActivity {
 
     private TextInputEditText emailEditText;
     private TextInputEditText passwordEditText;
@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity implements LoginManager.Log
 
         getLayoutIds();
         setButtonActions();
-        setupManager();
     }
 
     private void getLayoutIds() {

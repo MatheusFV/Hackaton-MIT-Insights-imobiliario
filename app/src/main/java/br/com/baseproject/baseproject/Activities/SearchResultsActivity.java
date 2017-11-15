@@ -83,7 +83,7 @@ public class SearchResultsActivity extends AppCompatActivity {
     }
 
     private ArrayList<Place> filterPlaces(ArrayList<Place> places, ArrayList<String> filters) {
-
+        return filters;
     }
 
 }
