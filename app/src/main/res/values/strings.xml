@@ -11,6 +11,7 @@
     <string name="button_get">Buscar Dados</string>
     <string name="button_login">Entrar</string>
     <string name="button_register">Cadastrar</string>
+    <string name="button_history">Histórico</string>
 
     <string name="hint_name">Nome</string>
     <string name="hint_email">Email</string>
