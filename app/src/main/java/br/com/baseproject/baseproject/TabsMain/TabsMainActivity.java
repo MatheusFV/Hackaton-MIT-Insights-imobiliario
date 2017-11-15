@@ -70,5 +70,8 @@ public class TabsMainActivity extends AppCompatActivity implements TabsListener 
             tabsMain.initTabsMain(tabBar, container, tabs, selectedColor, notSelectedColor);
         }
     }
+    public void configToolbar(){
+
+    }
 
 }

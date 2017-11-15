@@ -12,6 +12,9 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
+import br.com.baseproject.baseproject.R;
+import br.com.baseproject.baseproject.Utils.ToolbarConfigurator;
+
 /**
  * Created by mvenosa on 30/10/17.
  */
@@ -19,6 +22,7 @@ import java.util.ArrayList;
 public class TabsManager {
 
     //Required
+    private TabsMainActivity tabsMainActivity;
     private Activity activity;
     private TabsListener listener;
     private int container;
@@ -35,6 +39,7 @@ public class TabsManager {
 
     public TabsManager(TabsManagerBuilder builder) {
         this.activity = builder.activity;
+        this.tabsMainActivity = (TabsMainActivity) activity;
         this.listener = builder.listener;
         this.container = builder.container;
         this.tabs = builder.tabs;
@@ -63,6 +68,8 @@ public class TabsManager {
                 @Override
                 public void onClick(View view) {
                     selectFragment(tab.getFragment(), (ImageView) view);
+                    ToolbarConfigurator.configToolbar(tabsMainActivity.findViewById(R.id.toolbar),tab.getName(),0,0,tabsMainActivity);
+
                 }
             });
             tabImage.setPadding(25,25,25,25);
