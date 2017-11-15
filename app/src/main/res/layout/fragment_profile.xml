@@ -17,7 +17,7 @@
             <View
                 android:id="@+id/fragment_profile_view_top"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="10dp"
                 android:background="@color/colorAccent"/>
 
             <View
@@ -142,7 +142,8 @@
                 android:layout_centerInParent="true"
                 android:textSize="12sp"
                 android:text="@string/button_ratings"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"/>
 
         </RelativeLayout>
 

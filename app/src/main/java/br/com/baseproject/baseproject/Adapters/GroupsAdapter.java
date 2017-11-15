@@ -18,7 +18,6 @@ import br.com.baseproject.baseproject.Models.Place;
 import br.com.baseproject.baseproject.Navigation.Coordinator;
 import br.com.baseproject.baseproject.R;
 import br.com.baseproject.baseproject.databinding.ItemPlaceCardBinding;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by luciana on 15/11/17.
@@ -48,13 +47,13 @@ public class GroupsAdapter extends RecyclerView.Adapter<GroupsAdapter.PlaceViewH
         holder.binding.placeCardAccess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Coordinator.goToChat(activity, place.id, place.address, place.photoUrl);
+                Coordinator.goToChat(activity, place.id, place.address, place.imageUrl);
             }
         });
         holder.binding.placeCardPrice.setText("Preço: R$" + place.price.toString() + ",00");
-        holder.binding.placeCardSpots.setText("Vagas: " + place.spots.toString());
+        holder.binding.placeCardSpots.setText("Vagas: " + place.slots.toString());
         Glide.with(activity)
-                .load(place.photoUrl)
+                .load(place.imageUrl)
                 .apply(RequestOptions.placeholderOf(R.drawable.casa_placeholder))
                 .into(holder.placeImage);
     }

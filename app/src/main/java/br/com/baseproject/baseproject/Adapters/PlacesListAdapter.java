@@ -45,9 +45,9 @@ public class PlacesListAdapter extends RecyclerView.Adapter<PlacesListAdapter.Pl
         holder.bind(place);
         holder.binding.placeCardAccess.setVisibility(View.GONE);
         holder.binding.placeCardPrice.setText("Preço: R$" + place.price.toString() + ",00");
-        holder.binding.placeCardSpots.setText("Vagas: " + place.spots.toString());
+        holder.binding.placeCardSpots.setText("Vagas: " + place.slots.toString());
         Glide.with(activity)
-                .load(place.photoUrl)
+                .load(place.imageUrl)
                 .apply(RequestOptions.placeholderOf(R.drawable.casa_placeholder))
                 .into(holder.placeImage);
 

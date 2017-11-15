@@ -219,7 +219,6 @@ public class RegisterInfosActivity extends AppCompatActivity implements Register
                 !genderSelected.equals(getResources().getStringArray(R.array.genders)[0])  &&
                 !animalSelected.equals(getResources().getStringArray(R.array.yes_no_animal)[0])  &&
                 !ocupationSelected.equals(getResources().getStringArray(R.array.ocupation)[0]) ){
-            //TODO: Sucesso -> Integrar com o firebase
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(onSignUpComplete);
         }else{
             Toast.makeText(RegisterInfosActivity.this, "Por favor, selecione todos os campos", Toast.LENGTH_LONG).show();
