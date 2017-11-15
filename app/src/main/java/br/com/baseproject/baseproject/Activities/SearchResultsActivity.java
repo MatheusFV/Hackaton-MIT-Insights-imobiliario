@@ -13,6 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 import br.com.baseproject.baseproject.Adapters.PlacesListAdapter;
 import br.com.baseproject.baseproject.Managers.FirebaseManager;
@@ -25,7 +26,7 @@ import br.com.baseproject.baseproject.R;
 
 public class SearchResultsActivity extends AppCompatActivity {
 
-    List<Place> places;
+    ArrayList<Place> places;
     PlacesListAdapter adapter;
     RecyclerView placesRecyclerView;
 
@@ -71,7 +72,7 @@ public class SearchResultsActivity extends AppCompatActivity {
                     places.add(postSnapshot.getValue(Place.class));
 //                    Log.e("Get Data", post.<YourMethod>());
                 }
-                adapter = new PlacesListAdapter(places,SearchResultsActivity.this);
+                adapter = new PlacesListAdapter(filterPlaces(places, filters),SearchResultsActivity.this);
                 placesRecyclerView = findViewById(R.id.places_list);
                 placesRecyclerView.setAdapter(adapter);
                 placesRecyclerView.setLayoutManager(new LinearLayoutManager(SearchResultsActivity.this));
@@ -79,10 +80,10 @@ public class SearchResultsActivity extends AppCompatActivity {
         });
 
 
-
-
-
     }
 
+    private ArrayList<Place> filterPlaces(ArrayList<Place> places, ArrayList<String> filters) {
+
+    }
 
 }

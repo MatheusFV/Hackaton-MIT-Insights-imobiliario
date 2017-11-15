@@ -30,7 +30,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-import br.com.baseproject.baseproject.Managers.RegisterManager;
 import br.com.baseproject.baseproject.Models.User;
 import br.com.baseproject.baseproject.R;
 import br.com.baseproject.baseproject.Utils.Utils;

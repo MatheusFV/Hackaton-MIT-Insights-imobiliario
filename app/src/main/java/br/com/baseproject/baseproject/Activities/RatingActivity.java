@@ -5,14 +5,20 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 import br.com.baseproject.baseproject.Adapters.RatingsAdapter;
+import br.com.baseproject.baseproject.Managers.FirebaseManager;
 import br.com.baseproject.baseproject.R;
 
 public class RatingActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+
+    private DatabaseReference database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +26,9 @@ public class RatingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rating);
 
         getLayoutIds();
-        setupManager();
+
+        database = FirebaseDatabase.getInstance().getReference();
+
         setupRecyclerView();
     }
 
