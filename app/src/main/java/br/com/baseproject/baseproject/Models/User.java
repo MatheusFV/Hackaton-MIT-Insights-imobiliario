@@ -12,6 +12,7 @@ public class User {
     public String email;
     public UserTags tags;
     public String photoUrl;
+    public String status;
 
 
     public User(String id, String name, String phone, String email) {
@@ -31,5 +32,6 @@ public class User {
     public User(String name, String photoUrl) {
         this.name = name;
         this.photoUrl = photoUrl;
+        this.status = "pending";
     }
 }

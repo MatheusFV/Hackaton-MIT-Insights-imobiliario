@@ -8,18 +8,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.baseproject.baseproject.Adapters.UsersListAdapter;
+import br.com.baseproject.baseproject.Managers.FirebaseManager;
 import br.com.baseproject.baseproject.Models.Place;
 import br.com.baseproject.baseproject.Models.User;
 import br.com.baseproject.baseproject.R;
+import br.com.baseproject.baseproject.Utils.Utils;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -36,7 +41,14 @@ public class ProfilePropertyActivity extends AppCompatActivity {
     TextView price;
     CircleImageView avatar;
     Button interestButton;
+    String placeId;
+    User user;
 
+    private FirebaseManager firebaseManager;
+
+    //Firebase
+    private DatabaseReference database;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,13 +58,32 @@ public class ProfilePropertyActivity extends AppCompatActivity {
 
         getLayoutsIds();
 
+        Utils.setStatusBarColor(ProfilePropertyActivity.this, R.color.colorAccent);
+
+        //Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+        //Firebase Database
+        database = FirebaseDatabase.getInstance().getReference();
+
+
         Bundle b = getIntent().getExtras();
         if(b != null) {
-            String placeId = b.getString("placeId");
+            place = new Place(b.getString("name"), b.getString("address"), b.getString("slots"), b.getString("price"), null);
+            placeId = b.getString("id");
         }
-        place = new Place("https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg","Rua dos Pinheiros,832","3","1500",null);
+//        place = new Place("https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg","Rua dos Pinheiros,832","3","1500",null);
 
         setPropertyInfo();
+
+        DatabaseReference ref = database.child("users").child(mAuth.getCurrentUser().getUid());
+
+        firebaseManager = new FirebaseManager(ref, new FirebaseManager.EventDataListener() {
+            @Override
+            public void onRefresh(DataSnapshot dataSnapshot) {
+                user = new User(dataSnapshot.child("name").getValue().toString(), dataSnapshot.child("photoUrl").getValue().toString());
+            }
+        });
 
         //TODO get the place's members
         users = new ArrayList<>();
@@ -94,7 +125,13 @@ public class ProfilePropertyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //TODO interesse
-                Toast.makeText(ProfilePropertyActivity.this,R.string.interest_success_message,Toast.LENGTH_LONG).show();
+
+                DatabaseReference ref = database.child("usersGroup").child(mAuth.getCurrentUser().getUid()).child(placeId);
+                ref.setValue(new Place(place.address, "pending"));
+
+                DatabaseReference ref2 = database.child("placeRelations").child(placeId).child(mAuth.getCurrentUser().getUid());
+                ref2.setValue(user);
+
                 finish();
             }
         });

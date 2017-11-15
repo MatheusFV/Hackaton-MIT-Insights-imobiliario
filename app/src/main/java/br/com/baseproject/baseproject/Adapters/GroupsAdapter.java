@@ -44,14 +44,20 @@ public class GroupsAdapter extends RecyclerView.Adapter<GroupsAdapter.PlaceViewH
     public void onBindViewHolder(final GroupsAdapter.PlaceViewHolder holder, final int position) {
         final Place place = places.get(position);
         holder.bind(place);
+        if (place.status.equals("pending")) {
+            holder.binding.placeCardContainer.setBackgroundColor(activity.getResources().getColor(R.color.lightGray));
+            holder.binding.placeCardAccess.setVisibility(View.GONE);
+        }
+
         holder.binding.placeCardAccess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Coordinator.goToChat(activity, place.id, place.address, place.imageUrl);
             }
         });
-        holder.binding.placeCardPrice.setText("Preço: R$" + place.price.toString() + ",00");
-        holder.binding.placeCardSpots.setText("Vagas: " + place.slots.toString());
+        holder.binding.placeCardAddress.setText(place.address);
+//        holder.binding.placeCardPrice.setText("Preço: R$" + place.price.toString() + ",00");
+//        holder.binding.placeCardSpots.setText("Vagas: " + place.slots.toString());
         Glide.with(activity)
                 .load(place.imageUrl)
                 .apply(RequestOptions.placeholderOf(R.drawable.casa_placeholder))

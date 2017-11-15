@@ -51,7 +51,7 @@ public class PlacesListAdapter extends RecyclerView.Adapter<PlacesListAdapter.Pl
         holder.binding.placeCardContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Coordinator.goToPropertyProfile(activity,place.id);
+                Coordinator.goToPropertyProfile(activity,place);
             }
         });
         Glide.with(activity)

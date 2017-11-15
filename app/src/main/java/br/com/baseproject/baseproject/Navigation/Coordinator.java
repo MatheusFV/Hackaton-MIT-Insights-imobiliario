@@ -6,9 +6,10 @@ import android.content.Intent;
 import java.util.ArrayList;
 
 import br.com.baseproject.baseproject.Activities.ChatActivity;
-import br.com.baseproject.baseproject.Activities.RatingActivity;
 import br.com.baseproject.baseproject.Activities.ProfilePropertyActivity;
+import br.com.baseproject.baseproject.Activities.RatingActivity;
 import br.com.baseproject.baseproject.Activities.SearchResultsActivity;
+import br.com.baseproject.baseproject.Models.Place;
 
 /**
  * Created by teruya on 14/11/2017.
@@ -38,9 +39,13 @@ public class Coordinator {
         activity.startActivity(intent);
     }
 
-    public static void goToPropertyProfile(Activity activity, String placeId){
+    public static void goToPropertyProfile(Activity activity, Place place){
         Intent intent = new Intent(activity, ProfilePropertyActivity.class);
-        intent.putExtra("placeId",placeId);
+        intent.putExtra("address",place.address);
+        intent.putExtra("slots",place.slots);
+        intent.putExtra("price",place.price);
+        intent.putExtra("id",place.id);
+        intent.putExtra("imageUrl",place.imageUrl);
         activity.startActivity(intent);
     }
 }
