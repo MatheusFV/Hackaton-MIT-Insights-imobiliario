@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import br.com.baseproject.baseproject.Adapters.ProfileAdapter;
 import br.com.baseproject.baseproject.Managers.FirebaseManager;
 import br.com.baseproject.baseproject.Models.Place;
+import br.com.baseproject.baseproject.Navigation.Coordinator;
 import br.com.baseproject.baseproject.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -99,6 +100,7 @@ public class ProfileFragment extends Fragment {
 
         getLayoutIds();
         setupManager();
+        setButtonActions();
         setupRecyclerView();
         super.onViewCreated(view, savedInstanceState);
     }
@@ -137,7 +139,7 @@ public class ProfileFragment extends Fragment {
         historyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Coordinator.goToRatings(getActivity());
             }
         });
     }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import java.util.ArrayList;
 
 import br.com.baseproject.baseproject.Activities.ChatActivity;
+import br.com.baseproject.baseproject.Activities.RatingActivity;
 import br.com.baseproject.baseproject.Activities.SearchResultsActivity;
 
 /**
@@ -28,6 +29,11 @@ public class Coordinator {
         intent.putExtra("placeId",placeId);
         intent.putExtra("address",address);
         intent.putExtra("imageUrl",imageUrl);
+        activity.startActivity(intent);
+    }
+
+    public static void goToRatings(Activity activity) {
+        Intent intent = new Intent(activity, RatingActivity.class);
         activity.startActivity(intent);
     }
 }
