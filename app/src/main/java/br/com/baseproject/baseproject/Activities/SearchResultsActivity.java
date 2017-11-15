@@ -19,6 +19,7 @@ import br.com.baseproject.baseproject.Adapters.PlacesListAdapter;
 import br.com.baseproject.baseproject.Managers.FirebaseManager;
 import br.com.baseproject.baseproject.Models.Place;
 import br.com.baseproject.baseproject.R;
+import br.com.baseproject.baseproject.Utils.Utils;
 
 /**
  * Created by teruya on 14/11/2017.
@@ -48,6 +49,8 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_search_results);
 
+        Utils.setStatusBarColor(SearchResultsActivity.this, R.color.colorAccent);
+
         Bundle b = getIntent().getExtras();
         if(b != null) {
             referenceAddress = b.getString("address");
@@ -68,8 +71,12 @@ public class SearchResultsActivity extends AppCompatActivity {
         firebaseManager = new FirebaseManager(ref, new FirebaseManager.EventDataListener() {
             @Override
             public void onRefresh(DataSnapshot dataSnapshot) {
+                places.clear();
+                Place place;
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                    places.add(postSnapshot.getValue(Place.class));
+                    place = postSnapshot.getValue(Place.class);
+                    place.id = postSnapshot.getKey();
+                    places.add(place);
 //                    Log.e("Get Data", post.<YourMethod>());
                 }
                 adapter = new PlacesListAdapter(filterPlaces(places, filters),SearchResultsActivity.this);

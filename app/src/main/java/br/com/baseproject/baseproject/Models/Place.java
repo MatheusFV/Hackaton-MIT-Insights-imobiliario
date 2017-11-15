@@ -11,6 +11,7 @@ public class Place {
     public String address;
     public String slots;
     public String price;
+    public String status;
 
     public Place() {
     }
@@ -21,5 +22,10 @@ public class Place {
         this.slots = spots;
         this.price = price;
 //        this.tags = tags;
+    }
+
+    public Place(String address, String status) {
+        this.address = address;
+        this.status = status;
     }
 }

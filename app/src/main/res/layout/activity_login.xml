@@ -12,12 +12,14 @@
     android:id="@+id/container_login"
     tools:context="br.com.baseproject.baseproject.Activities.LoginActivity">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="40dp"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/logo"
+        app:civ_border_width="0.5dp"
+        app:civ_border_color="@color/black"/>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
