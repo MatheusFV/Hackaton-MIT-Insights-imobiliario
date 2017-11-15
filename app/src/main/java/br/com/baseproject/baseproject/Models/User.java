@@ -25,7 +25,8 @@ public class User {
         this.email = email;
     }
 
-    public User(String name, String photoUrl,boolean kicked) {
+    public User(String id,String name, String photoUrl,boolean kicked) {
+        this.id = id;
         this.name = name;
         this.photoUrl = photoUrl;
         this.kicked = kicked;

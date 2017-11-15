@@ -56,8 +56,7 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.User
                 holder.binding.itemUserButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //TODO newRating
-                        //Coordinator.goToRate();
+                        Coordinator.goToNewRating(activity,user.id);
                     }
                 });
             }else {

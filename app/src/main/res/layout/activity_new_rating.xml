@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include layout="@layout/item_custom_toolbar"
+            android:id="@+id/activity_new_rating_toolbar"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
+            <TextView
+                android:id="@+id/activity_new_rating_label_rate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_rate_user"
+                android:textSize="15sp"
+                />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/activity_new_rating_options_list"
+                android:layout_marginTop="7.5dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_below="@id/activity_new_rating_label_rate"
+                android:scrollbars="none"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </android.support.v7.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/activity_new_rating_save_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/button_accent"
+                android:text="@string/save"
+                android:textColor="@color/white"
+                android:layout_marginBottom="20dp"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+
+</android.support.constraint.ConstraintLayout>

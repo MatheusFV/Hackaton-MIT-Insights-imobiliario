@@ -13,6 +13,7 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
+import br.com.baseproject.baseproject.Activities.NewRatingActivity;
 import br.com.baseproject.baseproject.Fragments.SearchFragment;
 import br.com.baseproject.baseproject.R;
 import br.com.baseproject.baseproject.databinding.ItemCheckboxOptionBinding;
@@ -27,6 +28,7 @@ public class CheckboxListAdapter extends RecyclerView.Adapter<CheckboxListAdapte
     List<String> options;
     Activity activity;
     public SearchFragment searchFragment;
+    public NewRatingActivity newRatingActivity;
 
     public CheckboxListAdapter(List<String> options,Activity activity) {
         this.options = options;
@@ -43,12 +45,23 @@ public class CheckboxListAdapter extends RecyclerView.Adapter<CheckboxListAdapte
     @Override
     public void onBindViewHolder(final CheckBoxViewHolder holder,final  int position) {
         final String option = options.get(position);
-        holder.binding.checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                searchFragment.options[position] = b;
-            }
-        });
+        if(searchFragment!= null){
+            holder.binding.checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    searchFragment.options[position] = b;
+                }
+            });
+        }
+        if(newRatingActivity!=null){
+            holder.binding.checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    newRatingActivity.options[position] = b;
+                }
+            });
+        }
+
         holder.bind(option);
 
     }
