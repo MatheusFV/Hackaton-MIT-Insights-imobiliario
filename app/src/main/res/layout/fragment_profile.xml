@@ -53,7 +53,6 @@
                     android:id="@+id/fragment_profile_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rafael Hideaki Teruya"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="15dp"
                     android:textSize="18sp" />
@@ -75,7 +74,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="(11) 97567-4775"
 
                         android:fontFamily="sans-serif-light"
                         android:textSize="12sp" />
@@ -99,7 +97,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="giovanni.gardusi@gmail.com"
 
                         android:fontFamily="sans-serif-light"
                         android:textSize="12sp" />
