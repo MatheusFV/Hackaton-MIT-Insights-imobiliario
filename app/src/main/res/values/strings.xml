@@ -9,9 +9,11 @@
 
     <string name="button_save">Salvar Dados</string>
     <string name="button_get">Buscar Dados</string>
+    <string name="button_login">Entrar</string>
 
     <string name="hint_name">Nome</string>
     <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
 
     <string name="action_settings">Settings</string>
 

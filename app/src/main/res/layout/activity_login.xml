@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    android:background="@color/colorPrimary"
+    tools:context="br.com.baseproject.baseproject.Activities.LoginActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:textSize="30sp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="LIVING TOGETHER" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_login_field_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_email" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_login_field_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_password" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/activity_login_button_login"
+        android:layout_width="match_parent"
+        android:background="@color/colorAccent"
+        android:textSize="17sp"
+        android:text="@string/button_login"
+        android:layout_height="50dp" />
+
+</LinearLayout>
