@@ -99,6 +99,9 @@ public class RegisterInfosActivity extends AppCompatActivity {
                         final InputStream imageStream = getContentResolver().openInputStream(image);
                         final Bitmap bitmapImage = BitmapFactory.decodeStream(imageStream);
                         saveImageOnFirebase(bitmapImage);
+                    }else{
+                        Intent intent = new Intent(RegisterInfosActivity.this, TabsMainActivity.class);
+                        startActivity(intent);
                     }
                 }catch (FileNotFoundException e) {
                     e.printStackTrace();

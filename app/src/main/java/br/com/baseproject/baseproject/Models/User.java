@@ -41,4 +41,10 @@ public class User {
         this.photoUrl = photoUrl;
         this.status = "pending";
     }
+
+    public User(String name, String photoUrl, String status) {
+        this.name = name;
+        this.photoUrl = photoUrl;
+        this.status = status;
+    }
 }

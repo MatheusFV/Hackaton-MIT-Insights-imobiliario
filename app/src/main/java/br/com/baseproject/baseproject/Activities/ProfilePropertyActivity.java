@@ -71,7 +71,7 @@ public class ProfilePropertyActivity extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         if(b != null) {
-            place = new Place(b.getString("name"), b.getString("address"), b.getString("slots"), b.getString("price"), null);
+            place = new Place(b.getString("imageUrl"), b.getString("address"), b.getString("slots"), b.getString("price"), null);
             placeId = b.getString("id");
         }
 //        place = new Place("https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg","Rua dos Pinheiros,832","3","1500",null);
@@ -132,7 +132,7 @@ public class ProfilePropertyActivity extends AppCompatActivity {
                 //TODO interesse
 
                 DatabaseReference ref = database.child("usersGroup").child(mAuth.getCurrentUser().getUid()).child(placeId);
-                ref.setValue(new Place(place.address, "pending"));
+                ref.setValue(new Place(place.imageUrl, place.address, place.slots, place.price, "pending", null));
 
                 DatabaseReference ref2 = database.child("placeRelations").child(placeId).child(mAuth.getCurrentUser().getUid());
                 ref2.setValue(user);
