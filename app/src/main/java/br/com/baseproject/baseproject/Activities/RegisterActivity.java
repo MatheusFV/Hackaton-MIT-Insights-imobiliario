@@ -12,7 +12,6 @@ import android.widget.Button;
 
 import com.theartofdev.edmodo.cropper.CropImage;
 
-import br.com.baseproject.baseproject.Managers.RegisterManager;
 import br.com.baseproject.baseproject.Models.User;
 import br.com.baseproject.baseproject.R;
 import br.com.baseproject.baseproject.Utils.ImageUtils;
@@ -30,7 +29,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterManag
 
     private Button registerButton;
 
-    private RegisterManager manager;
     private ImageUtils imageUtilsHelper;
     private Uri image;
 
@@ -131,18 +129,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterManag
     }
 
     private void setupManager() {
-        manager = new RegisterManager(this);
         imageUtilsHelper = new ImageUtils();
-    }
-
-    @Override
-    public void registerSuccess() {
-
-    }
-
-    @Override
-    public void registerError(Error error) {
-
     }
 
     @Override

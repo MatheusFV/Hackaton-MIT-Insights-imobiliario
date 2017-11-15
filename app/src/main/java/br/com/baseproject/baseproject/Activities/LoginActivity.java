@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
-import br.com.baseproject.baseproject.Managers.LoginManager;
 import br.com.baseproject.baseproject.R;
 import br.com.baseproject.baseproject.Utils.Utils;
 
@@ -29,7 +28,6 @@ public class LoginActivity extends AppCompatActivity implements LoginManager.Log
     private Button loginButton;
     private TextView signUp;
     private LinearLayout container;
-    private LoginManager manager;
 
     //Firebase
     private FirebaseAuth mAuth;
@@ -105,18 +103,4 @@ public class LoginActivity extends AppCompatActivity implements LoginManager.Log
         });
     }
 
-    private void setupManager() {
-        manager = new LoginManager(this);
-    }
-
-
-    @Override
-    public void loginSuccess() {
-
-    }
-
-    @Override
-    public void loginError(Error error) {
-
-    }
 }

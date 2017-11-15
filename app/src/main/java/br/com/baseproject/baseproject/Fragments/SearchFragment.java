@@ -67,9 +67,7 @@ public class SearchFragment extends Fragment {
                 int maxPrice = rangeBar.getRightIndex() + tickStart;
                 ArrayList<String> selectedFilters = new ArrayList<>();
                 for( int i = 0; i < filters.size();i++){
-                    if(options[i]){
-                        selectedFilters.add(filters.get(i));
-                    }
+                    selectedFilters.add(String.valueOf(options[i]));
                 }
                 Coordinator.goToSearchResults(getActivity(),address,selectedFilters,minPrice,maxPrice);
             }
