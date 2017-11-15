@@ -14,8 +14,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
 
 import br.com.baseproject.baseproject.Adapters.PlacesListAdapter;
 import br.com.baseproject.baseproject.Managers.FirebaseManager;
@@ -139,7 +137,10 @@ public class SearchResultsActivity extends AppCompatActivity {
 
                     if (getSearchString(place.address).contains(getSearchString(referenceAddress)))
 
-                    if (addToResult) { places.add(place); }
+                    if (addToResult) {
+                        place.id = placeDS.getKey();
+                        places.add(place);
+                    }
                 }
                 adapter = new PlacesListAdapter(places,SearchResultsActivity.this);
                 placesRecyclerView = findViewById(R.id.places_list);

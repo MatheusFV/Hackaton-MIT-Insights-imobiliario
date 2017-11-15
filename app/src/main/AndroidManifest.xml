@@ -37,6 +37,13 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
+            android:name=".Activities.ProfilePropertyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
+
+        <activity
             android:name=".Activities.ChatActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -60,6 +67,7 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Activities.NewRatingActivity"
             android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
