@@ -1,9 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/colorPrimary"
     tools:context="br.com.baseproject.baseproject.Activities.RegisterActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <View
+        android:id="@+id/activity_register_view_top"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimaryDark"/>
+
+    <View
+        android:id="@+id/activity_register_view_top2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/activity_register_view_top"
+        android:background="@color/colorPrimaryDark"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/activity_register_view_top"
+        android:src="@drawable/ic_user"
+        app:civ_circle_background_color="@android:color/darker_gray"
+        app:civ_border_width="3dp"
+        app:civ_border_color="@android:color/white"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/activity_register_view_top2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/activity_register_field_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_name" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/activity_register_field_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_email" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/activity_register_field_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_phone" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/activity_register_field_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_password" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/activity_register_field_confirm_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_confirm_password" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/activity_register_button_register"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorAccent"
+                android:textSize="17sp"
+                android:text="@string/button_register"
+                android:layout_height="50dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
