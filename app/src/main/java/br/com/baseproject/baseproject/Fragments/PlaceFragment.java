@@ -58,6 +58,7 @@ public class PlaceFragment extends Fragment {
 
     private FirebaseManager firebaseManager;
     private FirebaseManager firebaseManager2;
+    private FirebaseManager firebaseManager3;
 
     public PlaceFragment() {
         // Required empty public constructor
@@ -107,7 +108,21 @@ public class PlaceFragment extends Fragment {
 
                     if (place.status.equals("confirmed")){
                         myPlace = place;
-                    }else{
+                        DatabaseReference ref3 = database.child("placeRelations").child(myPlace.id);
+
+                        firebaseManager3 = new FirebaseManager(ref3, new FirebaseManager.EventDataListener() {
+                            @Override
+                            public void onRefresh(DataSnapshot dataSnapshot) {
+                                users = new ArrayList<User>();
+                                for (DataSnapshot ds: dataSnapshot.getChildren()) {
+                                    users.add(new User(ds.child("name").getValue().toString(), ds.child("photoUrl").getValue().toString(), ds.child("status").getValue().toString()));
+                                }
+                                adapter = new UsersListAdapter(users,getActivity());
+                                usersRecyclerView.setAdapter(adapter);
+                                usersRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                            }
+                        });
+                    } else {
                         myPlace = null;
                     }
                 }
@@ -124,17 +139,6 @@ public class PlaceFragment extends Fragment {
                 user = new User(dataSnapshot.child("name").getValue().toString(), dataSnapshot.child("photoUrl").getValue().toString(), "kicked");
             }
         });
-
-
-        users = new ArrayList<>();
-        users.add(new User("dsadas","Rafael Teruya","https://static1.squarespace.com/static/51435924e4b02285c8b9c92d/t/558c96c3e4b03457461d0f2e/1508845725260/caiobraga-perfil.jpg",true));
-        users.add(new User("fdsfdsfsd","Henrique Guisasola","http://newtonlimainteriores.com.br/wp-content/uploads/2016/03/home-perfil-e1484258783292.x54920.png",false));
-        users.add(new User("fdfdsfsd","Rafael Teruya","https://static1.squarespace.com/static/51435924e4b02285c8b9c92d/t/558c96c3e4b03457461d0f2e/1508845725260/caiobraga-perfil.jpg",true));
-        users.add(new User("fdsfds","Henrique Guisasola","http://newtonlimainteriores.com.br/wp-content/uploads/2016/03/home-perfil-e1484258783292.x54920.png",false));
-
-        adapter = new UsersListAdapter(users,getActivity());
-        usersRecyclerView.setAdapter(adapter);
-        usersRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         setListeners();
     }
