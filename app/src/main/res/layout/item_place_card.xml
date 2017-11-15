@@ -5,7 +5,7 @@
     <data>
         <variable
             name="place"
-            type="br.com.baseproject.baseproject.Models.PlaceModel"/>
+            type="br.com.baseproject.baseproject.Models.Place"/>
     </data>
 
     <LinearLayout
@@ -28,7 +28,7 @@
                 android:src="@drawable/casa_placeholder"/>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
@@ -55,6 +55,19 @@
                         android:layout_alignParentRight="true"
                         android:text="Preço : R$ 2000,00"/>
             </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:id="@+id/place_card_access"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_access"
+                style="@style/Base.Widget.AppCompat.Button.Borderless" />
+
         </LinearLayout>
         <View
             android:layout_width="match_parent"
