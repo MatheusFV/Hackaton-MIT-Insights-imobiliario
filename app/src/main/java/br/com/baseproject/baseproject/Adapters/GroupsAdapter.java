@@ -12,52 +12,58 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import br.com.baseproject.baseproject.Models.Place;
+import br.com.baseproject.baseproject.Navigation.Coordinator;
 import br.com.baseproject.baseproject.R;
 import br.com.baseproject.baseproject.databinding.ItemPlaceCardBinding;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Created by teruya on 15/11/2017.
+ * Created by luciana on 15/11/17.
  */
 
-public class PlacesListAdapter extends RecyclerView.Adapter<PlacesListAdapter.PlaceViewHolder> {
+public class GroupsAdapter extends RecyclerView.Adapter<GroupsAdapter.PlaceViewHolder> {
 
-    List<Place> places;
-    Activity activity;
+    private ArrayList<Place> places;
+    private Activity activity;
 
-    public PlacesListAdapter(List<Place> places,Activity activity) {
-        this.places = places;
+    public GroupsAdapter(Activity activity, ArrayList<Place> places) {
         this.activity = activity;
+        this.places = places;
     }
 
     @Override
-    public PlacesListAdapter.PlaceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public GroupsAdapter.PlaceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         ItemPlaceCardBinding binding = ItemPlaceCardBinding.inflate(inflater, parent, false);
-        return new PlaceViewHolder(binding);
+        return new GroupsAdapter.PlaceViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(final PlacesListAdapter.PlaceViewHolder holder,final  int position) {
+    public void onBindViewHolder(final GroupsAdapter.PlaceViewHolder holder, final int position) {
         final Place place = places.get(position);
         holder.bind(place);
-        holder.binding.placeCardAccess.setVisibility(View.GONE);
+        holder.binding.placeCardAccess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Coordinator.goToChat(activity, place.id, place.address, place.photoUrl);
+            }
+        });
         holder.binding.placeCardPrice.setText("Preço: R$" + place.price.toString() + ",00");
         holder.binding.placeCardSpots.setText("Vagas: " + place.spots.toString());
         Glide.with(activity)
                 .load(place.photoUrl)
                 .apply(RequestOptions.placeholderOf(R.drawable.casa_placeholder))
                 .into(holder.placeImage);
-
-
     }
 
     @Override
     public int getItemCount() {
-        return places.size();
+        return this.places.size();
     }
+
 
     public static class PlaceViewHolder extends RecyclerView.ViewHolder {
 

@@ -1,0 +1,98 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="br.com.baseproject.baseproject.Activities.ChatActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/colorPrimaryDark">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/activity_chat_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/icon_home"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/white"
+            app:civ_circle_background_color="@android:color/darker_gray"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activity_chat_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Endereço da Casa" />
+
+            <TextView
+                android:id="@+id/activity_chat_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:fontFamily="sans-serif-light"
+                android:text="Paulo e mais 3 moradores" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.stfalcon.chatkit.messages.MessagesList
+        android:id="@+id/activity_chat_message_list"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="41dp"
+        app:incomingDefaultBubbleColor="@color/colorPrimary"
+        app:incomingTextLinkColor="@color/colorPrimaryDark"
+        app:incomingTextSize="14sp"
+        app:incomingTextColor="@color/white"
+        app:outcomingDefaultBubbleColor="@color/colorPrimaryDark"
+        app:outcomingTextLinkColor="@color/colorPrimaryDark"
+        app:outcomingTextSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="-51dp"
+        android:background="@color/colorPrimaryDark" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark" />
+
+    <com.stfalcon.chatkit.messages.MessageInput
+        android:id="@+id/activity_chat_message_input"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="1px"
+        android:paddingStart="5dp"
+        app:attachmentButtonWidth="0dp"
+        app:inputHintColor="@color/colorPrimary"
+        app:inputButtonBackground="@color/colorPrimary"
+        app:inputButtonDefaultIconColor="@color/white"
+        app:inputButtonDefaultIconDisabledColor="@color/white60"
+        app:inputButtonMargin="20dp"
+        app:inputButtonHeight="50dp"
+        app:inputButtonWidth="50dp"
+        app:inputButtonIcon="@drawable/ic_send"
+        app:inputHint="Insira uma mensagem"
+        app:inputTextSize="14sp"
+        app:showAttachmentButton="true"
+        android:background="@color/white"
+        />
+
+</LinearLayout>

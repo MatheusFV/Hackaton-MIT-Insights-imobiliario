@@ -148,12 +148,15 @@ public class ProfileFragment extends Fragment {
 
     private void setupRecyclerView() {
 
-        ArrayList<Place> mock = new ArrayList<Place>();
-        mock.add(new Place("Rua dos Guararapes, 205"));
-        mock.add(new Place("Avenida Paulista, 2770"));
-        mock.add(new Place("Rua Antônio Vieira de Carvalho, 32"));
+        ArrayList<Place> places = new ArrayList<Place>();
+        places.add(new Place("https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg","Rua Tijuco Preto, 933, apto 73",3,1500));
+        places.add(new Place("http://www.porterdavis.com.au/~/media/homes/vienna%20h/vienna%20h%2021/facades/vienna_21_albion.jpg?w=582&amp;h=320&amp;crop=1","Rua dos Pinheiros, 1090, bloco 3, apto 90",2,750));
+        places.add(new Place("https://s3.amazonaws.com/uscx-media/houses/hp2/slides/slide-1.jpg","Rua Butanta,461,conjunto 21",4,1100));
+        places.add(new Place("https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg","Rua Tijuco Preto, 933, apto 73",3,1500));
+        places.add(new Place("http://www.porterdavis.com.au/~/media/homes/vienna%20h/vienna%20h%2021/facades/vienna_21_albion.jpg?w=582&amp;h=320&amp;crop=1","Rua dos Pinheiros, 1090, bloco 3, apto 90",2,750));
+        places.add(new Place("https://s3.amazonaws.com/uscx-media/houses/hp2/slides/slide-1.jpg","Rua Butanta,461,conjunto 21",4,1100));
 
-        final ProfileAdapter adapter = new ProfileAdapter(mock);
+        final ProfileAdapter adapter = new ProfileAdapter(places);
         userHistory.setAdapter(adapter);
         userHistory.setLayoutManager(new LinearLayoutManager(this.getActivity()));
     }
