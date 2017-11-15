@@ -12,7 +12,7 @@
     <string name="button_login">Entrar</string>
     <string name="button_advance">Avançar</string>
     <string name="button_register">Cadastrar</string>
-    <string name="button_history">Histórico</string>
+    <string name="button_history">Avaliações</string>
 
     <string name="hint_name">Nome</string>
     <string name="hint_email">Email</string>

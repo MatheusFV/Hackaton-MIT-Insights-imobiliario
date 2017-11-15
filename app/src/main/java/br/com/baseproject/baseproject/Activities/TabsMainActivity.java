@@ -8,6 +8,7 @@ import br.com.baseproject.baseproject.Fragments.PlaceFragment;
 import br.com.baseproject.baseproject.Fragments.ProfileFragment;
 import br.com.baseproject.baseproject.Fragments.SearchFragment;
 import br.com.baseproject.baseproject.R;
+import br.com.baseproject.baseproject.Utils.Utils;
 
 public class TabsMainActivity extends br.com.baseproject.baseproject.TabsMain.TabsMainActivity {
 
@@ -16,16 +17,18 @@ public class TabsMainActivity extends br.com.baseproject.baseproject.TabsMain.Ta
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs_main);
 
+        Utils.setStatusBarColor(TabsMainActivity.this, R.color.colorAccent);
+
         new TabsMainBuilder()
                 .setContainer(R.id.fragmentContainer)
                 //TODO: pegar a cor certa
-                .setNotSelectedColor("#444349")
-                .setSelectedColor("#0f4f6d")
+                .setNotSelectedColor("#ffffff")
+                .setSelectedColor("#ffd11a")
                 .setTabBar((LinearLayout) findViewById(R.id.belowTab))
-                .addTab(getDrawable(R.drawable.icon_search), "#eeeeee", "Emissões", new SearchFragment())
-                .addTab(getDrawable(R.drawable.icon_chat), "#eeeeee", "Declarações", new GroupsFragment())
-                .addTab(getDrawable(R.drawable.icon_home), "#eeeeee", "Financeiro", new PlaceFragment())
-                .addTab(getDrawable(R.drawable.icon_profile), "#eeeeee", "DAS", new ProfileFragment())
+                .addTab(getDrawable(R.drawable.icon_search), "#23538B", "Emissões", new SearchFragment())
+                .addTab(getDrawable(R.drawable.icon_chat), "#23538B", "Declarações", new GroupsFragment())
+                .addTab(getDrawable(R.drawable.icon_home), "#23538B", "Financeiro", new PlaceFragment())
+                .addTab(getDrawable(R.drawable.icon_profile), "#23538B", "DAS", new ProfileFragment())
                 .init(this);
     }
 }

@@ -5,7 +5,12 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.StateListDrawable;
+import android.os.Build;
+import android.support.annotation.ColorRes;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import java.text.Normalizer;
@@ -36,6 +41,18 @@ public class Utils {
         res.addState(new int[]{android.R.attr.state_pressed}, pressedColor);
         res.addState(new int[]{}, new ColorDrawable(color));
         return res;
+    }
+
+    public static void setStatusBarColor(Activity activity, @ColorRes int colorId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = activity.getWindow();
+            // clear FLAG_TRANSLUCENT_STATUS flag:
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            //get the color from the int then finally change the color
+            window.setStatusBarColor(ContextCompat.getColor(activity, colorId));
+        }
     }
 
     // Normaliza as strings de pesquisa para minuscula, sem acentos ou diacriticos

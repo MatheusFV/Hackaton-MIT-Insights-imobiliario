@@ -82,6 +82,7 @@
                     android:id="@+id/activity_register_field_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
                     android:hint="@string/hint_phone" />
 
             </android.support.design.widget.TextInputLayout>

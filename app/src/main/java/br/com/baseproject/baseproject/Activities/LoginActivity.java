@@ -7,6 +7,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import com.kaopiz.kprogresshud.KProgressHUD;
 
 import br.com.baseproject.baseproject.Managers.LoginManager;
 import br.com.baseproject.baseproject.R;
+import br.com.baseproject.baseproject.Utils.Utils;
 
 public class LoginActivity extends AppCompatActivity implements LoginManager.LoginFeedback {
 
@@ -26,6 +28,7 @@ public class LoginActivity extends AppCompatActivity implements LoginManager.Log
     private TextInputEditText passwordEditText;
     private Button loginButton;
     private TextView signUp;
+    private LinearLayout container;
     private LoginManager manager;
 
     //Firebase
@@ -53,6 +56,7 @@ public class LoginActivity extends AppCompatActivity implements LoginManager.Log
         passwordEditText = findViewById(R.id.activity_login_field_password);
         signUp = findViewById(R.id.login_sign_up);
         loginButton = findViewById(R.id.activity_login_button_login);
+        container = findViewById(R.id.container_login);
     }
 
     private void setButtonActions() {
@@ -71,6 +75,13 @@ public class LoginActivity extends AppCompatActivity implements LoginManager.Log
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utils.hideKeyboard(view, LoginActivity.this);
             }
         });
     }

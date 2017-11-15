@@ -18,14 +18,14 @@
                 android:id="@+id/fragment_profile_view_top"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@color/colorPrimaryDark"/>
+                android:background="@color/colorAccent"/>
 
             <View
                 android:id="@+id/activity_register_view_top2"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_below="@id/fragment_profile_view_top"
-                android:background="@color/colorPrimaryDark"/>
+                android:background="@color/colorAccent"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/fragment_profile_avatar"
@@ -108,22 +108,10 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/fragment_profile_button_history"
-                android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:layout_above="@+id/view"
-                android:layout_alignParentEnd="true"
-                android:background="@color/colorAccent"
-                android:textSize="12sp"
-                android:text="@string/button_history"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="10dp" />
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorPrimaryDark"
+                android:background="@color/colorYellow"
                 android:layout_below="@id/fragment_profile_info"
                 android:id="@+id/view" />
 
@@ -132,16 +120,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="1dp"
-                android:background="@color/colorPrimary"
+                android:background="@android:color/white"
                 android:layout_below="@id/fragment_profile_info">
 
             </android.support.v7.widget.RecyclerView>
 
             <View
+                android:id="@+id/last_divider"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorPrimaryDark"
+                android:background="@color/colorYellow"
                 android:layout_below="@id/fragment_profile_history"/>
+
+            <Button
+                android:id="@+id/fragment_profile_button_history"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/last_divider"
+                android:textColor="@android:color/white"
+                android:background="@color/colorAccent"
+                android:layout_centerInParent="true"
+                android:textSize="12sp"
+                android:text="@string/button_history"
+                android:layout_marginTop="20dp" />
 
         </RelativeLayout>
 

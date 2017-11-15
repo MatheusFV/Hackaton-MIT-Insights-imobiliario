@@ -17,7 +17,7 @@
             android:layout_width="3dp"
             android:layout_height="match_parent"
             android:layout_marginStart="30dp"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@color/colorYellow"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/item_history_icon"
@@ -28,7 +28,7 @@
             android:src="@drawable/icon_home"
             app:civ_circle_background_color="@android:color/white"
             app:civ_border_width="2dp"
-            app:civ_border_color="@color/colorPrimaryDark"/>
+            app:civ_border_color="@color/colorYellow"/>
 
         <TextView
             android:id="@+id/item_history_address"

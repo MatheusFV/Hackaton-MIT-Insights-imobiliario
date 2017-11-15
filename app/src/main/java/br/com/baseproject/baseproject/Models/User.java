@@ -10,12 +10,9 @@ public class User {
     public String name;
     public String phone;
     public String email;
-    public String gender;
+    public UserTags tags;
     public String photoUrl;
-    public String age;
-    public boolean animal;
-    public String ocupation;
-    public boolean smoke;
+
 
     public User(String id, String name, String phone, String email) {
         this.id = id;
@@ -28,10 +25,6 @@ public class User {
         this.name = name;
         this.phone = phone;
         this.email = email;
-        this.gender = gender;
-        this.age = age;
-        this.animal = animal;
-        this.ocupation = ocupation;
-        this.smoke = smoke;
+        this.tags = new UserTags(age, animal, ocupation, smoke, gender);
     }
 }

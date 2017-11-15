@@ -1,5 +1,6 @@
 package br.com.baseproject.baseproject.Activities;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -32,6 +33,7 @@ import java.io.InputStream;
 import br.com.baseproject.baseproject.Managers.RegisterManager;
 import br.com.baseproject.baseproject.Models.User;
 import br.com.baseproject.baseproject.R;
+import br.com.baseproject.baseproject.Utils.Utils;
 
 public class RegisterInfosActivity extends AppCompatActivity implements RegisterManager.RegisterFeedback{
 
@@ -67,6 +69,8 @@ public class RegisterInfosActivity extends AppCompatActivity implements Register
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_infos);
 
+        Utils.setStatusBarColor(RegisterInfosActivity.this, R.color.colorAccent);
+
         //Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
@@ -96,9 +100,11 @@ public class RegisterInfosActivity extends AppCompatActivity implements Register
                 DatabaseReference ref = database.child("users").child(mAuth.getCurrentUser().getUid());
                 ref.setValue(createUser(mAuth.getCurrentUser().getUid()));
                 try{
-                    final InputStream imageStream = getContentResolver().openInputStream(image);
-                    final Bitmap bitmapImage = BitmapFactory.decodeStream(imageStream);
-                    saveImageOnFirebase(bitmapImage);
+                    if (image != null){
+                        final InputStream imageStream = getContentResolver().openInputStream(image);
+                        final Bitmap bitmapImage = BitmapFactory.decodeStream(imageStream);
+                        saveImageOnFirebase(bitmapImage);
+                    }
                 }catch (FileNotFoundException e) {
                     e.printStackTrace();
                     Toast.makeText(RegisterInfosActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
@@ -172,6 +178,8 @@ public class RegisterInfosActivity extends AppCompatActivity implements Register
                 String photoUrl = taskSnapshot.getDownloadUrl().toString();
                 database.child("users").child(uid).child("photoUrl").setValue(photoUrl);
                 //TODO: cadastro completo - redirecionar
+                Intent intent = new Intent(RegisterInfosActivity.this, TabsMainActivity.class);
+                startActivity(intent);
                 }
             });
         }

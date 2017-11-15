@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -20,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.kaopiz.kprogresshud.KProgressHUD;
 
 import java.util.ArrayList;
 
@@ -48,6 +48,8 @@ public class ProfileFragment extends Fragment {
 
     private FirebaseManager firebaseManager;
 
+    KProgressHUD progressHUD;
+
     public ProfileFragment() {
 
     }
@@ -72,19 +74,26 @@ public class ProfileFragment extends Fragment {
         //Firebase Database
         database = FirebaseDatabase.getInstance().getReference();
 
+        progressHUD = KProgressHUD.create(getActivity()).setDimAmount(0.5F).setCancellable(false);
+
+        progressHUD.show();
         DatabaseReference ref = database.child("users").child(mAuth.getCurrentUser().getUid());
 
         firebaseManager = new FirebaseManager(ref, new FirebaseManager.EventDataListener() {
             @Override
             public void onRefresh(DataSnapshot dataSnapshot) {
-                Toast.makeText(getActivity() ,"oid", Toast.LENGTH_LONG).show();
                 setFieldsTexts(dataSnapshot.child("name").getValue().toString(),
                         dataSnapshot.child("email").getValue().toString(),
                         dataSnapshot.child("phone").getValue().toString());
-                Glide.with(getActivity())
-                        .load(dataSnapshot.child("photoUrl").getValue().toString())
-                        .apply(RequestOptions.placeholderOf(R.color.colorPrimaryDark))
-                        .into(image);
+
+                if (dataSnapshot.child("photoUrl").getValue() != null){
+                    Glide.with(getActivity())
+                            .load(dataSnapshot.child("photoUrl").getValue().toString())
+                            .apply(RequestOptions.placeholderOf(R.color.colorPrimaryDark))
+                            .into(image);
+                }
+
+                progressHUD.dismiss();
             }
         });
 
