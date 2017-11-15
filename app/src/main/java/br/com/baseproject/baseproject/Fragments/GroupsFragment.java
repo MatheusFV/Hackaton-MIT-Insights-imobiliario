@@ -63,7 +63,7 @@ public class GroupsFragment extends Fragment {
     }
 
     private void setupManager() {
-//        manager = new RegisterManager(this);
+
     }
 
     private void setupRecyclerView() {

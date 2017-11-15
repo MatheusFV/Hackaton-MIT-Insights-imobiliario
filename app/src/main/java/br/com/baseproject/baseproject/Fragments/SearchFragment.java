@@ -92,17 +92,13 @@ public class SearchFragment extends Fragment {
         floatingActionButton = getActivity().findViewById(R.id.search_event_floating_action_button);
         optionsRecyclerView = getActivity().findViewById(R.id.search_filters_list);
         filters = new ArrayList<>();
-        filters.add("Filtro 1");
-        filters.add("Filtro 2");
-        filters.add("Filtro 3");
-        filters.add("Filtro 4");
-        filters.add("Filtro 5");
-        filters.add("Filtro 6");
-        filters.add("Filtro 7");
-        filters.add("Filtro 8");
-        filters.add("Filtro 9");
-        filters.add("Filtro 10");
-        filters.add("Filtro 11");
+
+        filters.add("Já existem moradores");
+        filters.add("Ainda não há moradores no momento");
+        filters.add("Posso morar sozinho");
+        filters.add("Os moradores tem idade parecida com a minha");
+        filters.add("Os moradores tem perfil similar ao meu");
+        filters.add("O proprietário é membro ativo do aplicativo");
 
         options= new Boolean[filters.size()];
         Arrays.fill(options, Boolean.FALSE);

@@ -23,9 +23,9 @@
 
     <string name="hint_address_reference">Endereço de referência</string>
     <string name="price">Preço(R$)</string>
-    <string name="filters">Filtros</string>
     <string name="members">Membros</string>
     <string name="interest_success_message">Seu interesse foi enviado com sucesso. Espere pela confirmação do proprietário na aba "Grupos". </string>
+    <string name="filters">Desejo buscar lugares onde:</string>
 
     <string name="action_settings">Configurações</string>
 
