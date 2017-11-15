@@ -12,8 +12,6 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
-import br.com.baseproject.baseproject.Utils.Utils;
-
 /**
  * Created by mvenosa on 30/10/17.
  */
@@ -55,7 +53,8 @@ public class TabsManager {
 
         for (final TabModel tab: tabs){
             tabImage = new ImageView(activity);
-            tabImage.setImageResource(Utils.getDrawableFromString(activity, tab.getIcon()));
+            tabImage.setImageDrawable(tab.getIcon());
+//            tabImage.setImageResource(Utils.getDrawableFromString(activity, tab.getIcon()));
             tabImage.setBackgroundColor(Color.parseColor(tab.getBackgroundColor()));
             tabImage.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 1f));
             fragmentTransaction.add(this.container, tab.getFragment());

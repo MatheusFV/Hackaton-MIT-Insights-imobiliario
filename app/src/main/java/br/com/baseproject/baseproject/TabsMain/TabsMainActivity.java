@@ -1,6 +1,7 @@
 package br.com.baseproject.baseproject.TabsMain;
 
 import android.app.Fragment;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 
@@ -60,7 +61,7 @@ public class TabsMainActivity extends AppCompatActivity implements TabsListener 
             return this;
         }
 
-        public TabsMainBuilder addTab(String icon, String backgroundColor, String name, Fragment fragment){
+        public TabsMainBuilder addTab(Drawable icon, String backgroundColor, String name, Fragment fragment){
             this.tabs.add(new TabModel(icon, backgroundColor, name, fragment));
             return this;
         }
