@@ -87,7 +87,7 @@ public class ProfileFragment extends Fragment {
                         dataSnapshot.child("email").getValue().toString(),
                         dataSnapshot.child("phone").getValue().toString());
 
-                if (dataSnapshot.child("photoUrl").getValue() != null){
+                if (dataSnapshot.child("photoUrl") != null){
                     Glide.with(getActivity())
                             .load(dataSnapshot.child("photoUrl").getValue().toString())
                             .apply(RequestOptions.placeholderOf(R.color.colorPrimaryDark))
