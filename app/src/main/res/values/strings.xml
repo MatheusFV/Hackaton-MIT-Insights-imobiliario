@@ -10,6 +10,7 @@
     <string name="button_save">Salvar Dados</string>
     <string name="button_get">Buscar Dados</string>
     <string name="button_login">Entrar</string>
+    <string name="button_advance">Avançar</string>
     <string name="button_register">Cadastrar</string>
     <string name="button_history">Histórico</string>
 
@@ -22,4 +23,41 @@
     <string name="action_settings">Configurações</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="genders">
+        <item>Gênero</item>
+        <item>Masculino</item>
+        <item>Feminino</item>
+        <item>Não informado</item>
+    </string-array>
+
+    <string-array name="yes_no_smoke">
+        <item>Fumante</item>
+        <item>Sim</item>
+        <item>Não</item>
+    </string-array>
+
+    <string-array name="yes_no_animal">
+        <item>Possui animais</item>
+        <item>Sim</item>
+        <item>Não</item>
+    </string-array>
+
+    <string-array name="ocupation">
+        <item>Profissão</item>
+        <item>Estudante</item>
+        <item>Autônomo</item>
+        <item>Trabalho Formal</item>
+        <item>Não informar</item>
+    </string-array>
+
+    <string-array name="age">
+        <item>Idade</item>
+        <item>16 - 18</item>
+        <item>19 - 21</item>
+        <item>22 - 25</item>
+        <item>26 - 30</item>
+        <item>30+</item>
+    </string-array>
+
 </resources>

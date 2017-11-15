@@ -28,13 +28,8 @@
 
         <activity android:name=".Activities.TabsMainActivity"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        
+
         <activity android:name=".Activities.SearchResultsActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
@@ -42,7 +37,16 @@
             android:name=".Activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activities.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activities.RegisterInfosActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
