@@ -46,11 +46,7 @@
             custom:tickEnd="2000"
             custom:tickHeight="0dp"
             custom:tickInterval="1"
-            custom:tickStart="100"
-            custom:pinColor="@color/colorPrimaryDark"
-            custom:connectingLineColor="@color/colorPrimaryDark"
-            custom:rangeBarColor="@color/colorPrimary"
-            custom:selectorColor="@color/colorPrimaryDark"/>
+            custom:tickStart="100"/>
 
         <TextView
             android:id="@+id/fragment_search_label_filters"

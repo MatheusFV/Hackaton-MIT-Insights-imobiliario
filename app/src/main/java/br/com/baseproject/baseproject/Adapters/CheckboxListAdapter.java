@@ -14,7 +14,6 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.List;
 
 import br.com.baseproject.baseproject.Fragments.SearchFragment;
-import br.com.baseproject.baseproject.Models.PlaceModel;
 import br.com.baseproject.baseproject.R;
 import br.com.baseproject.baseproject.databinding.ItemCheckboxOptionBinding;
 import br.com.baseproject.baseproject.databinding.ItemPlaceCardBinding;
