@@ -47,6 +47,8 @@ public class GroupsAdapter extends RecyclerView.Adapter<GroupsAdapter.PlaceViewH
         if (place.status.equals("pending")) {
             holder.binding.placeCardContainer.setBackgroundColor(activity.getResources().getColor(R.color.lightGray));
             holder.binding.placeCardAccess.setVisibility(View.GONE);
+        }else if (place.status.equals("kicked")){
+            holder.binding.placeCardContainer.setVisibility(View.GONE);
         }
 
         holder.binding.placeCardAccess.setOnClickListener(new View.OnClickListener() {

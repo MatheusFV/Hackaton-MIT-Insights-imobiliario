@@ -30,6 +30,12 @@
             android:name=".Activities.TabsMainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".Activities.RatingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".Activities.ChatActivity"
             android:screenOrientation="portrait"
