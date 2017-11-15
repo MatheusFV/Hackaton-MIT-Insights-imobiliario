@@ -62,9 +62,6 @@ public class ProfilePropertyActivity extends AppCompatActivity {
 
         Utils.setStatusBarColor(ProfilePropertyActivity.this, R.color.colorAccent);
 
-        //Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
-
         //Firebase Database
         database = FirebaseDatabase.getInstance().getReference();
 
@@ -131,6 +128,7 @@ public class ProfilePropertyActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //TODO interesse
 
+                mAuth = FirebaseAuth.getInstance();
                 DatabaseReference ref = database.child("usersGroup").child(mAuth.getCurrentUser().getUid()).child(placeId);
                 ref.setValue(new Place(place.imageUrl, place.address, place.slots, place.price, "pending", null));
 

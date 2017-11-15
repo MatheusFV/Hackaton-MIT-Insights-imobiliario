@@ -32,6 +32,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
+            android:name=".Activities.ProfilePropertyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
             android:name=".Activities.RatingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
