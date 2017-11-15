@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import br.com.baseproject.baseproject.Activities.ChatActivity;
 import br.com.baseproject.baseproject.Activities.RatingActivity;
+import br.com.baseproject.baseproject.Activities.ProfilePropertyActivity;
 import br.com.baseproject.baseproject.Activities.SearchResultsActivity;
 
 /**
@@ -34,6 +35,12 @@ public class Coordinator {
 
     public static void goToRatings(Activity activity) {
         Intent intent = new Intent(activity, RatingActivity.class);
+        activity.startActivity(intent);
+    }
+
+    public static void goToPropertyProfile(Activity activity, String placeId){
+        Intent intent = new Intent(activity, ProfilePropertyActivity.class);
+        intent.putExtra("placeId",placeId);
         activity.startActivity(intent);
     }
 }

@@ -27,4 +27,9 @@ public class User {
         this.email = email;
         this.tags = new UserTags(age, animal, ocupation, smoke, gender);
     }
+
+    public User(String name, String photoUrl) {
+        this.name = name;
+        this.photoUrl = photoUrl;
+    }
 }

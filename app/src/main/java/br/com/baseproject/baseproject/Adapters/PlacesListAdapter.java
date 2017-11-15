@@ -15,6 +15,7 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.List;
 
 import br.com.baseproject.baseproject.Models.Place;
+import br.com.baseproject.baseproject.Navigation.Coordinator;
 import br.com.baseproject.baseproject.R;
 import br.com.baseproject.baseproject.databinding.ItemPlaceCardBinding;
 
@@ -46,6 +47,13 @@ public class PlacesListAdapter extends RecyclerView.Adapter<PlacesListAdapter.Pl
         holder.binding.placeCardAccess.setVisibility(View.GONE);
         holder.binding.placeCardPrice.setText("Preço: R$" + place.price.toString() + ",00");
         holder.binding.placeCardSpots.setText("Vagas: " + place.slots.toString());
+        holder.binding.placeCardAccess.setVisibility(View.GONE);
+        holder.binding.placeCardContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Coordinator.goToPropertyProfile(activity,place.id);
+            }
+        });
         Glide.with(activity)
                 .load(place.imageUrl)
                 .apply(RequestOptions.placeholderOf(R.drawable.casa_placeholder))
