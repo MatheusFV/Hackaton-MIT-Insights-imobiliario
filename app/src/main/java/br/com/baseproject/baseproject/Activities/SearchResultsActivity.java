@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +20,7 @@ import br.com.baseproject.baseproject.Adapters.PlacesListAdapter;
 import br.com.baseproject.baseproject.Managers.FirebaseManager;
 import br.com.baseproject.baseproject.Models.Place;
 import br.com.baseproject.baseproject.R;
+import br.com.baseproject.baseproject.Utils.ToolbarConfigurator;
 import br.com.baseproject.baseproject.Utils.Utils;
 
 /**
@@ -30,6 +32,7 @@ public class SearchResultsActivity extends AppCompatActivity {
     ArrayList<Place> places;
     PlacesListAdapter adapter;
     RecyclerView placesRecyclerView;
+    View toolbar;
 
     String referenceAddress;
     ArrayList<String> filters;
@@ -48,6 +51,9 @@ public class SearchResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_search_results);
+
+        toolbar = findViewById(R.id.activity_search_results_toolbar);
+        ToolbarConfigurator.configToolbar(toolbar,"Resultados de Busca",R.drawable.ic_arrow_back,0,this);
 
         Utils.setStatusBarColor(SearchResultsActivity.this, R.color.colorAccent);
 

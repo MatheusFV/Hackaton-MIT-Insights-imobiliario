@@ -24,6 +24,7 @@ import br.com.baseproject.baseproject.Managers.FirebaseManager;
 import br.com.baseproject.baseproject.Models.Place;
 import br.com.baseproject.baseproject.Models.User;
 import br.com.baseproject.baseproject.R;
+import br.com.baseproject.baseproject.Utils.ToolbarConfigurator;
 import br.com.baseproject.baseproject.Utils.Utils;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -43,6 +44,7 @@ public class ProfilePropertyActivity extends AppCompatActivity {
     Button interestButton;
     String placeId;
     User user;
+    View toolbar;
 
     private FirebaseManager firebaseManager;
 
@@ -105,6 +107,7 @@ public class ProfilePropertyActivity extends AppCompatActivity {
         price = findViewById(R.id.activity_property_price);
         avatar = findViewById(R.id.activity_property_avatar);
         interestButton = findViewById(R.id.activity_property_button_interest);
+        toolbar = findViewById(R.id.activity_profile_toolbar);
     }
 
     void setPropertyInfo(){
@@ -118,6 +121,8 @@ public class ProfilePropertyActivity extends AppCompatActivity {
                     .apply(RequestOptions.placeholderOf(R.drawable.casa_placeholder))
                     .into(avatar);
         }
+
+        ToolbarConfigurator.configToolbar(toolbar,"Perfil do Spot",R.drawable.ic_arrow_back,0,this);
     }
 
     void setListeners(){

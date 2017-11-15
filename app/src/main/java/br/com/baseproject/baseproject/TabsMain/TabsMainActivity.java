@@ -20,7 +20,7 @@ public class TabsMainActivity extends AppCompatActivity implements TabsListener 
                 .setTabs(tabs)
                 .setSelectedTabColor(selectedTabColor)
                 .setNotSelectedTabColor(notSelectedTabColor)
-                .setInitialFragment(2)
+                .setInitialFragment(3)
                 .build();
 
         tabsManager.generateTabsLayout();

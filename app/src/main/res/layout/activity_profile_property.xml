@@ -4,115 +4,122 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="br.com.baseproject.baseproject.Fragments.ProfileFragment">
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include layout="@layout/item_custom_toolbar"
+            android:id="@+id/activity_profile_toolbar"/>
 
-        <RelativeLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <View
-                android:id="@+id/fragment_profile_view_top"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@color/colorAccent"/>
-
-            <View
-                android:id="@+id/activity_register_view_top2"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_below="@id/fragment_profile_view_top"
-                android:background="@color/colorAccent"/>
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/activity_property_avatar"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/fragment_profile_view_top"
-                android:src="@drawable/ic_user"
-                app:civ_circle_background_color="@android:color/darker_gray"
-                app:civ_border_width="3dp"
-                app:civ_border_color="@android:color/white"/>
-
-            <LinearLayout
-                android:id="@+id/activity_property_info"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:layout_below="@id/activity_property_avatar">
+                android:orientation="vertical">
 
+                <View
+                    android:id="@+id/fragment_profile_view_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/colorAccent"/>
 
-                <TextView
-                    android:id="@+id/activity_property_address"
+                <View
+                    android:id="@+id/activity_register_view_top2"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/fragment_profile_view_top"
+                    android:background="@color/colorAccent"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/activity_property_avatar"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/fragment_profile_view_top"
+                    android:src="@drawable/ic_user"
+                    app:civ_circle_background_color="@android:color/darker_gray"
+                    app:civ_border_width="3dp"
+                    app:civ_border_color="@android:color/white"/>
+
+                <LinearLayout
+                    android:id="@+id/activity_property_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Rua dos Pinheiros, 832"
-                    android:gravity="center_horizontal"/>
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_below="@id/activity_property_avatar">
+
+
+                    <TextView
+                        android:id="@+id/activity_property_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Rua dos Pinheiros, 832"
+                        android:gravity="center_horizontal"/>
+
+                    <TextView
+                        android:id="@+id/activity_property_spots"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Vagas: 2"
+                        android:gravity="center_horizontal"/>
+
+                    <TextView
+                        android:id="@+id/activity_property_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Preço: R$ 700,00"
+                        android:gravity="center_horizontal"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent"
+                    android:layout_below="@id/activity_property_info"
+                    android:id="@+id/view" />
+
+
+                <Button
+                    android:id="@+id/activity_property_button_interest"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/activity_property_info"
+                    android:background="@drawable/button_border_transparent"
+                    android:layout_centerInParent="true"
+                    android:textSize="12sp"
+                    android:text="@string/button_interest"
+                    android:layout_marginTop="20dp" />
 
                 <TextView
-                    android:id="@+id/activity_property_spots"
+                    android:id="@+id/activity_property_label_members"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Vagas: 2"
-                    android:gravity="center_horizontal"/>
+                    android:layout_below="@id/activity_property_button_interest"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/members"/>
 
-                <TextView
-                    android:id="@+id/activity_property_price"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/activity_property_members_list"
+                    android:layout_marginTop="7.5dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_below="@id/activity_property_label_members"
+                    android:scrollbars="none"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Preço: R$ 700,00"
-                    android:gravity="center_horizontal"/>
+                    android:layout_height="match_parent">
+                </android.support.v7.widget.RecyclerView>
 
-            </LinearLayout>
+            </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorAccent"
-                android:layout_below="@id/activity_property_info"
-                android:id="@+id/view" />
-
-
-            <Button
-                android:id="@+id/activity_property_button_interest"
-                android:layout_width="200dp"
-                android:layout_height="40dp"
-                android:layout_below="@+id/activity_property_info"
-                android:background="@drawable/button_border_transparent"
-                android:layout_centerInParent="true"
-                android:textSize="12sp"
-                android:text="@string/button_interest"
-                android:layout_marginTop="20dp" />
-
-            <TextView
-                android:id="@+id/activity_property_label_members"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/activity_property_button_interest"
-                android:layout_marginTop="20dp"
-                android:text="@string/members"/>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/activity_property_members_list"
-                android:layout_marginTop="7.5dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_below="@id/activity_property_label_members"
-                android:scrollbars="none"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </android.support.v7.widget.RecyclerView>
-
-        </RelativeLayout>
-
-    </ScrollView>
+        </ScrollView>
+    </LinearLayout>
 
 </FrameLayout>

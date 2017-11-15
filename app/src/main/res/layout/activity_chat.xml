@@ -6,6 +6,8 @@
     android:orientation="vertical"
     tools:context="br.com.baseproject.baseproject.Activities.ChatActivity">
 
+    <include layout="@layout/item_custom_toolbar"
+        android:id="@+id/activity_chat_toolbar"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
