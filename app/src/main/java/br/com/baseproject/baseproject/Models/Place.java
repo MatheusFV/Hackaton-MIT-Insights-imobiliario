@@ -7,16 +7,19 @@ package br.com.baseproject.baseproject.Models;
 public class Place {
 
     public String id;
-    public String photoUrl;
+    public String imageUrl;
     public String address;
-    public Integer spots;
-    public Integer price;
-    public String[] tags;
+    public String slots;
+    public String price;
 
-    public Place(String photoUrl, String address, Integer spots, Integer price) {
-        this.photoUrl = photoUrl;
+    public Place() {
+    }
+
+    public Place(String photoUrl, String address, String spots, String price, String[] tags) {
+        this.imageUrl = photoUrl;
         this.address = address;
-        this.spots = spots;
+        this.slots = spots;
         this.price = price;
+//        this.tags = tags;
     }
 }
