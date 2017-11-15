@@ -4,10 +4,179 @@
     android:layout_height="match_parent"
     tools:context="br.com.baseproject.baseproject.Fragments.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="SEARCH" />
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:orientation="vertical">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/fragment_search_field_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_address_reference"
+                android:inputType="textCapWords"
+                android:textSize="14sp"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/price"/>
+
+        <com.appyvet.rangebar.RangeBar xmlns:custom="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/search_price_rangebar"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            custom:pinMaxFont="12sp"
+            custom:pinMinFont="12sp"
+            custom:pinRadius="15dp"
+            custom:temporaryPins="false"
+            custom:tickEnd="2000"
+            custom:tickHeight="0dp"
+            custom:tickInterval="1"
+            custom:tickStart="100"
+            custom:pinColor="@color/colorPrimaryDark"
+            custom:connectingLineColor="@color/colorPrimaryDark"
+            custom:rangeBarColor="@color/colorPrimary"
+            custom:selectorColor="@color/colorPrimaryDark"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/filters"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/fragment_search_filter1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Filtro 1"/>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/fragment_search_filter2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Filtro 2"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/fragment_search_filter3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Filtro 3"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/fragment_search_filter4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Filtro 4"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/fragment_search_filter5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Filtro 5"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/fragment_search_filter6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Filtro 6"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/fragment_search_filter7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Filtro 7"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/fragment_search_filter8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Filtro 8"/>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/search_event_floating_action_button"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_gravity="bottom|end"
+            android:src="@drawable/icon_search"
+            android:tint="@color/white"
+            android:scaleType="center" />
+
+    </LinearLayout>
 
 </FrameLayout>

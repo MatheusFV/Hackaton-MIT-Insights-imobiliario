@@ -4,10 +4,15 @@ package br.com.baseproject.baseproject.Fragments;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputEditText;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.appyvet.rangebar.RangeBar;
+
+import br.com.baseproject.baseproject.Navigation.Coordinator;
 import br.com.baseproject.baseproject.R;
 
 /**
@@ -15,14 +20,9 @@ import br.com.baseproject.baseproject.R;
  */
 
 public class SearchFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private TextInputEditText referenceAddressEditText;
+    private RangeBar rangeBar;
+    private FloatingActionButton floatingActionButton;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -31,10 +31,27 @@ public class SearchFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        getLayoutIds();
+
+    }
+
+    private void getLayoutIds() {
+        referenceAddressEditText = getActivity().findViewById(R.id.fragment_search_field_address);
+        rangeBar = getActivity().findViewById(R.id.search_price_rangebar);
+        floatingActionButton = getActivity().findViewById(R.id.search_event_floating_action_button);
+    }
+
+    private void setButtonActions() {
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String address = referenceAddressEditText.getText().toString();
+                int minPrice = rangeBar.getLeftIndex();
+                int maxPrice = rangeBar.getRightIndex();
+                Coordinator.goToSearchResults(getActivity(),address,null,minPrice,maxPrice);
+            }
+        });
     }
 
     @Override
