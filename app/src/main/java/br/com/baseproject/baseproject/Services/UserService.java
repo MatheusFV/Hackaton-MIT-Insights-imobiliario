@@ -7,7 +7,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import br.com.baseproject.baseproject.Managers.MainManager.MainFeedback;
 import br.com.baseproject.baseproject.Models.User;
 
 /**
